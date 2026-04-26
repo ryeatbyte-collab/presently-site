@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRESENTLY × 108° — 브랜드 스토리</title>
+  <meta name="description" content="화씨 108도는 치유의 목욕 온도. 불교에서 108은 번뇌의 수. 같은 숫자, 같은 방향. 이것이 PRESENTLY × 108°의 시작이다.">
+  <meta name="keywords" content="108도, 바스솔트, PRESENTLY, 브랜드 철학, 번뇌, 목욕, 수행, 라이프스타일">
+  <meta property="og:title" content="PRESENTLY × 108° — 브랜드 스토리">
+  <meta property="og:description" content="화씨 108도와 불교의 108번뇌. 같은 숫자가 만나는 지점에서 이 브랜드가 시작되었다.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://presently.at/about.html">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* About page specific */
+    .about-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--sage);
+      color: var(--white);
+      padding: var(--space-3xl) var(--container-padding);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero::before {
+      content: '108°';
+      position: absolute;
+      font-family: var(--font-heading);
+      font-size: clamp(12rem, 30vw, 24rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.04);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+    .about-hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 660px;
+    }
+    .about-hero__eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      display: block;
+      margin-bottom: var(--space-md);
+    }
+    .about-hero__number {
+      font-family: var(--font-heading);
+      font-size: clamp(4rem, 12vw, 9rem);
+      font-weight: 400;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: var(--space-md);
+      letter-spacing: -0.02em;
+    }
+    .about-hero__title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.4;
+      margin-bottom: var(--space-md);
+    }
+    .about-hero__sub {
+      color: rgba(255,255,255,0.65);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    /* Section: The Number */
+    .about-section {
+      padding: var(--space-3xl) 0;
+    }
+    .about-section + .about-section {
+      border-top: 1px solid var(--border);
+    }
+    .about-section--alt {
+      background: var(--bg-secondary);
+    }
+    .about-inner {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+    }
+    .about-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      display: block;
+      margin-bottom: var(--space-md);
+    }
+    .about-section h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: var(--text-primary);
+      margin-bottom: var(--space-md);
+      line-height: 1.3;
+    }
+    .about-section p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: var(--space-md);
+    }
+    .about-section p:last-child { margin-bottom: 0; }
+    .about-section strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* The 108 split */
+    .number-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      margin: var(--space-xl) 0;
+    }
+    @media (max-width: 640px) {
+      .number-split { grid-template-columns: 1fr; }
+    }
+    .number-card {
+      padding: var(--space-lg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+    .number-card__num {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      font-weight: 400;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: var(--space-sm);
+    }
+    .number-card__label {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: var(--space-sm);
+    }
+    .number-card h3 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+    .number-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+    .number-card--sage {
+      background: var(--sage);
+      border-color: var(--sage);
+    }
+    .number-card--sage .number-card__num,
+    .number-card--sage .number-card__label,
+    .number-card--sage h3 { color: rgba(255,255,255,0.9); }
+    .number-card--sage .number-card__label { color: rgba(255,255,255,0.5); }
+    .number-card--sage p { color: rgba(255,255,255,0.7); }
+
+    /* Philosophy */
+    .philosophy-block {
+      background: var(--bg-secondary);
+      border-left: 3px solid var(--accent);
+      padding: var(--space-lg) var(--space-lg) var(--space-lg) calc(var(--space-lg) + 1px);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin: var(--space-xl) 0;
+    }
+    .philosophy-block blockquote {
+      font-family: var(--font-korean);
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      line-height: 1.9;
+      font-style: normal;
+      margin-bottom: var(--space-sm);
+    }
+    .philosophy-block cite {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: normal;
+    }
+
+    /* Daily ritual timeline */
+    .ritual-timeline {
+      margin: var(--space-xl) 0;
+    }
+    .ritual-item {
+      display: flex;
+      gap: var(--space-md);
+      padding-bottom: var(--space-lg);
+      position: relative;
+    }
+    .ritual-item::before {
+      content: '';
+      position: absolute;
+      left: calc(2.5rem / 2);
+      top: 2.5rem;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+    .ritual-item:last-child::before { display: none; }
+    .ritual-item:last-child { padding-bottom: 0; }
+    .ritual-item__time {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .ritual-item__body {}
+    .ritual-item__label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+    .ritual-item__title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    .ritual-item__desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    /* PRESENTLY name */
+    .name-meanings {
+      display: grid;
+      gap: var(--space-sm);
+      margin: var(--space-xl) 0;
+    }
+    .name-meaning {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+    }
+    .name-meaning__num {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--accent-light);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 2rem;
+      text-align: center;
+    }
+    .name-meaning__body {}
+    .name-meaning__en {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+    .name-meaning__kr {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Products teaser */
+    .products-teaser {
+      background: var(--sage);
+      color: var(--white);
+      padding: var(--space-3xl) 0;
+      text-align: center;
+    }
+    .products-teaser h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+    }
+    .products-teaser p {
+      color: rgba(255,255,255,0.65);
+      max-width: 540px;
+      margin: 0 auto var(--space-lg);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    .notify-form {
+      display: flex;
+      gap: 0.5rem;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    @media (max-width: 480px) {
+      .notify-form { flex-direction: column; }
+    }
+    .notify-form input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+    }
+    .notify-form input::placeholder { color: rgba(255,255,255,0.4); }
+    .notify-form input:focus { outline: none; border-color: rgba(255,255,255,0.5); }
+    .notify-form button {
+      padding: 0.75rem 1.4rem;
+      border-radius: var(--radius-md);
+      border: none;
+      background: var(--white);
+      color: var(--sage);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity var(--transition);
+      white-space: nowrap;
+    }
+    .notify-form button:hover { opacity: 0.85; }
+    .notify-note {
+      margin-top: var(--space-sm);
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "PRESENTLY × 108° 브랜드 스토리",
+    "url": "https://presently.at/about.html",
+    "description": "화씨 108도는 치유의 목욕 온도. 불교에서 108은 번뇌의 수. 같은 숫자, 같은 방향. 이것이 PRESENTLY × 108°의 시작이다.",
+    "mainEntityOfPage": {
+      "@type": "Organization",
+      "name": "PRESENTLY",
+      "url": "https://presently.at",
+      "sameAs": ["https://instagram.com/be.presently"]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "108°는 무슨 뜻인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "108°F는 섭씨 42.2도로, 일본 온센과 치유적 목욕의 온도입니다. 동시에 불교에서 인간이 가진 번뇌의 수가 108가지입니다. 뜨거운 물 속에서 108가지 번뇌를 내려놓는 시간 — 이 두 의미가 만나는 지점이 108° 브랜드의 시작입니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "PRESENTLY는 무슨 의미인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PRESENTLY는 세 가지 의미를 담고 있습니다. 첫째, 지금 이 순간에 존재한다는 'Present(현재)'의 부사형. 둘째, 매일의 의식이 나 자신에게 주는 'Present(선물)'. 셋째, '곧 평온함에 도달할 것이다'는 Presently의 부사적 의미."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "화씨 108도는 몇 도인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "화씨 108°F는 섭씨 42.2°C입니다. 이 온도는 일본 전통 온센(온천)의 평균 온도이자 치유적 목욕(therapeutic bath)으로 알려진 온도 범위입니다. 혈액순환을 촉진하고 근육 이완에 효과적입니다."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="메인 네비게이션">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="PRESENTLY 홈">PRESENTLY<span></span></a>
+      <div class="nav__links">
+        <a href="/blog.html?cat=food">먹는 것</a>
+        <a href="/blog.html?cat=bath">씻는 것</a>
+        <a href="/blog.html?cat=stationery">쓰는 것</a>
+        <a href="/blog.html?cat=scent">향 · 차 · 주방</a>
+        <a href="/blog.html?cat=philosophy">철학</a>
+        <a href="/about.html" class="nav__108" aria-current="page">108°</a>
+        <a href="https://instagram.com/be.presently" target="_blank" rel="noopener" class="nav__instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          @be.presently
+        </a>
+      </div>
+      <button class="nav__hamburger" aria-label="메뉴" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="about-hero" id="top" aria-label="108° 브랜드 소개">
+    <div class="about-hero__inner">
+      <span class="about-hero__eyebrow">be. presently</span>
+      <div class="about-hero__number">108°</div>
+      <h1 class="about-hero__title">
+        뜨거운 물 속에서<br>번뇌를 내려놓는 시간
+      </h1>
+      <p class="about-hero__sub">
+        화씨 108도와 불교의 108번뇌.<br>
+        같은 숫자가 만나는 지점에서 이 브랜드가 시작되었다.
+      </p>
+    </div>
+  </section>
+
+  <!-- The Number -->
+  <section class="about-section" id="number" aria-label="108의 의미">
+    <div class="about-inner">
+      <span class="about-label">The Number</span>
+      <h2>왜 108인가</h2>
+      <p>
+        처음에는 우연처럼 보였다. 목욕 온도를 화씨로 변환했더니 108이 나왔다.
+        그리고 불교에서 인간의 번뇌를 헤아렸더니 108이었다.
+        같은 숫자, 같은 방향.
+      </p>
+      <p>
+        이것이 우연이 아닌 것 같다는 느낌에서 이 브랜드가 시작되었다.
+      </p>
+
+      <div class="number-split">
+        <div class="number-card">
+          <div class="number-card__num">108°F</div>
+          <div class="number-card__label">Temperature</div>
+          <h3>치유의 목욕 온도</h3>
+          <p>
+            화씨 108도는 섭씨 42.2도. 일본 온센(온천)의 평균 온도이자 치료용 핫배스의
+            이상적인 범위다. 혈액순환을 촉진하고, 근육을 이완하고, 독소를 배출한다.
+            몸을 치유하는 온도.
+          </p>
+        </div>
+        <div class="number-card number-card--sage">
+          <div class="number-card__num">108</div>
+          <div class="number-card__label">Buddhism</div>
+          <h3>번뇌의 수</h3>
+          <p>
+            인간이 가진 번뇌의 수가 108가지. 6가지 감각기관 × 좋음·싫음·중립 3가지 ×
+            과거·현재·미래 3가지 = 108. 108배는 절을 한 번 할 때마다
+            번뇌 하나를 내려놓는 수행이다.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        <strong>뜨거운 물 속에서 108가지 번뇌를 내려놓는 시간.</strong><br>
+        목욕의 온도와 불교의 철학이 같은 숫자에서 만난다.
+        이것이 108° 브랜드의 가장 강력한 이야기다.
+      </p>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="about-section about-section--alt" id="philosophy" aria-label="브랜드 철학">
+    <div class="about-inner">
+      <span class="about-label">Philosophy</span>
+      <h2>모든 것은 안으로부터</h2>
+
+      <div class="philosophy-block">
+        <blockquote>
+          "모든 괴로움과 얽매임은 잘 살펴보면 다 내 마음이 일으킨다.<br>
+          행복과 자유는 밖으로 찾아서는 결코 얻을 수 없기 때문이다.<br>
+          안으로 살펴보면 그 모든 괴로움의 뿌리가 다 마음 가운데 있고,<br>
+          그 마음의 실체가 본래 공한 줄 알면 모든 괴로움과 얽매임은 즉시 사라진다."
+        </blockquote>
+        <cite>— PRESENTLY의 시작이 된 한 문장</cite>
+      </div>
+
+      <p>
+        이 브랜드는 밖에서 행복을 찾지 않는 사람들을 위한 것이다.
+        이미 알고 있다 — 모든 것은 안에서 온다는 것을.
+        나로부터 나아가, 나에게 돌아온다.
+      </p>
+      <p>
+        수행자의 자세로 산다는 것은 거창하지 않다.
+        욕심 내지 않고 나누며, 화내지 않고 웃으며,
+        미워하지 않고 사랑하며, 이해 받으려 하지 않고 이해하며,
+        내 인생의 주인이 되어 살아가는 것.
+      </p>
+      <p>
+        그리고 약식동원(藥食同源) — 음식과 약은 같은 뿌리에서 온다.
+        먹는 것이 곧 몸을 돌보는 것이다.
+      </p>
+    </div>
+  </section>
+
+  <!-- Daily Ritual -->
+  <section class="about-section" id="ritual" aria-label="매일의 의식">
+    <div class="about-inner">
+      <span class="about-label">Daily Ritual</span>
+      <h2>매일의 의식들</h2>
+      <p>
+        이 브랜드는 특별한 날을 위한 것이 아니다.
+        매일의 작은 의식들이 쌓여 삶이 된다.
+      </p>
+
+      <div class="ritual-timeline">
+        <div class="ritual-item">
+          <div class="ritual-item__time">🌅</div>
+          <div class="ritual-item__body">
+            <div class="ritual-item__label">아침</div>
+            <div class="ritual-item__title">108배 — 번뇌를 하나씩 내려놓으며</div>
+            <p class="ritual-item__desc">
+              향을 피우고, 차를 마신다. 만년필로 마음을 쓴다.
+              참회일기에 어제를 놓아주고, 새 하루를 시작한다.
+            </p>
+          </div>
+        </div>
+        <div class="ritual-item">
+          <div class="ritual-item__time">☀️</div>
+          <div class="ritual-item__body">
+            <div class="ritual-item__label">낮</div>
+            <div class="ritual-item__title">좋은 재료로 밥을 짓는다</div>
+            <p class="ritual-item__desc">
+              먹는 것이 곧 몸을 돌보는 것임을 안다.
+              저탄고지는 트렌드가 아니라 철학이다.
+              책을 읽고, 기억하고 싶은 것들을 노트에 적는다.
+            </p>
+          </div>
+        </div>
+        <div class="ritual-item">
+          <div class="ritual-item__time">🌙</div>
+          <div class="ritual-item__body">
+            <div class="ritual-item__label">저녁</div>
+            <div class="ritual-item__title">108°의 욕조에 몸을 담근다</div>
+            <p class="ritual-item__desc">
+              뜨거운 물에 몸을 담근다. 화씨 108도.
+              괄사로 몸의 기를 깨우고, 오늘 하루를 일기에 담는다.
+              이 모든 것이 수행이다. 거창하지 않게, 조용하게, 매일.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESENTLY Name -->
+  <section class="about-section about-section--alt" id="name" aria-label="PRESENTLY 이름의 의미">
+    <div class="about-inner">
+      <span class="about-label">The Name</span>
+      <h2>PRESENTLY — 이 이름에 담긴 것들</h2>
+
+      <div class="name-meanings">
+        <div class="name-meaning">
+          <div class="name-meaning__num">1</div>
+          <div class="name-meaning__body">
+            <div class="name-meaning__en">Present — 지금 이 순간</div>
+            <p class="name-meaning__kr">
+              108배를 하고, 차를 마시고, 목욕을 하는 행위는
+              과거의 후회나 미래의 불안에 사는 게 아니라
+              '지금(Present)'의 감각으로 돌아오는 연습이다.
+              Presently는 그 현재에 머무름을 부사 형태로 표현한 것.
+            </p>
+          </div>
+        </div>
+        <div class="name-meaning">
+          <div class="name-meaning__num">2</div>
+          <div class="name-meaning__body">
+            <div class="name-meaning__en">Present — 나에게 주는 선물</div>
+            <p class="name-meaning__kr">
+              영어에서 Present는 '현재'인 동시에 '선물'이다.
+              매일의 의식이 나 자신에게 주는 가장 귀한 선물이라는 의미를 담는다.
+            </p>
+          </div>
+        </div>
+        <div class="name-meaning">
+          <div class="name-meaning__num">3</div>
+          <div class="name-meaning__body">
+            <div class="name-meaning__en">Presently — 곧 도달할 평온함</div>
+            <p class="name-meaning__kr">
+              Presently의 '곧'이라는 의미를 빌려와,
+              "이 도구들을 사용하는 순간, 당신은 곧 평온함에 도달할 것이다"
+              라는 뉘앙스로 읽힌다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Now -->
+  <section class="about-section" id="why" aria-label="왜 지금인가">
+    <div class="about-inner">
+      <span class="about-label">Why Now</span>
+      <h2>왜 지금인가</h2>
+      <p>
+        AI가 일을 가져갈수록 사람들은 손으로 만지고 몸으로 느끼는 것을 찾는다.
+        기계가 줄 수 없는 것들. 기본소득의 시대, 철학의 시대가 오면
+        — 어떻게 살아야 하는지에 대한 질문이 많아진다.
+      </p>
+      <p>
+        이 브랜드는 그 질문에 이미 답하고 있는 사람의 것이다.
+      </p>
+      <p>
+        사우나 열풍, 아날로그 열풍, 명상과 마음챙김의 부상.
+        시장이 이쪽으로 오고 있다. 이미 이 자리에 있으면 된다.
+      </p>
+
+      <div class="philosophy-block" style="margin-top: var(--space-xl);">
+        <blockquote>
+          "매일 나에게 돌아오는 사람들을 위한 브랜드."
+        </blockquote>
+        <cite>— Be presently. 108°</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Teaser -->
+  <section class="products-teaser" id="products" aria-label="108° 제품 출시 예정">
+    <div class="container">
+      <h2>108° 제품, 출시 예정</h2>
+      <p>
+        직접 만드는 바스솔트. 사해소금, 엡솜솔트, 에센셜오일.<br>
+        레스토랑 출신의 재료 지식이 욕조로 들어갔다.<br>
+        뷰티 업계 10년 파트너와 함께 만드는 제품.
+      </p>
+      <form class="notify-form" id="notify-form" onsubmit="handleNotify(event)">
+        <input type="email" name="email" placeholder="이메일을 남겨주세요" required aria-label="이메일">
+        <button type="submit">출시 알림받기</button>
+      </form>
+      <p class="notify-note">스팸 없음. 출시할 때만 연락드려요.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-name">PRESENTLY</div>
+          <p class="footer__brand-tagline">
+            매일 나에게 돌아오는 사람들을 위한 브랜드.<br>
+            먹는 것, 씻는 것, 쓰는 것 — 잘 고른 것들로 나를 가꾸는 이야기.
+          </p>
+          <a href="https://instagram.com/be.presently" target="_blank" rel="noopener" class="footer__instagram">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg>
+            @be.presently
+          </a>
+        </div>
+        <div>
+          <p class="footer__heading">카테고리</p>
+          <ul class="footer__links">
+            <li><a href="/blog.html?cat=food">먹는 것</a></li>
+            <li><a href="/blog.html?cat=bath">씻는 것</a></li>
+            <li><a href="/blog.html?cat=stationery">쓰는 것</a></li>
+            <li><a href="/blog.html?cat=scent">향 · 차 · 주방</a></li>
+            <li><a href="/blog.html?cat=philosophy">철학 · 북저널</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">브랜드</p>
+          <ul class="footer__links">
+            <li><a href="/about.html">108° 스토리</a></li>
+            <li><a href="/about.html#philosophy">브랜드 철학</a></li>
+            <li><a href="#products">108° 제품 (출시 예정)</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">더 보기</p>
+          <ul class="footer__links">
+            <li><a href="#">문의</a></li>
+            <li><a href="#">협업 제안</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 PRESENTLY. presently.at</span>
+        <span class="footer__bottom-108">108°</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function handleNotify(e) {
+      e.preventDefault();
+      const email = e.target.email.value;
+      const btn = e.target.querySelector('button');
+      btn.textContent = '✓ 등록됐어요!';
+      btn.disabled = true;
+      // TODO: connect to email service (Mailchimp, ConvertKit, etc.)
+      console.log('Notify signup:', email);
+    }
+  </script>
+</body>
+</html>

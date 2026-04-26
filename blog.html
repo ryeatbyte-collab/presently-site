@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 — PRESENTLY</title>
+  <meta name="description" content="먹는 것, 씻는 것, 쓰는 것. PRESENTLY가 매일 정리하는 잘 고른 것들에 대한 이야기.">
+  <meta name="keywords" content="PRESENTLY, 라이프스타일, 달걀, 바스솔트, 일본문구, 목욕, 저탄고지, 약식동원">
+  <meta property="og:title" content="글 목록 — PRESENTLY">
+  <meta property="og:description" content="먹는 것, 씻는 것, 쓰는 것. 잘 고른 것들로 나를 가꾸는 이야기.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://presently.at/blog.html">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Blog-specific styles */
+    .blog-hero {
+      padding: calc(var(--space-3xl) + 60px) 0 var(--space-xl);
+      text-align: center;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+    }
+    .blog-hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--text-primary);
+      margin-bottom: var(--space-sm);
+    }
+    .blog-hero p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+    }
+
+    /* Filter tabs */
+    .filter-bar {
+      padding: var(--space-md) 0;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 60px;
+      z-index: 90;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .filter-bar__inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+      display: flex;
+      gap: var(--space-xs);
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      align-items: center;
+    }
+    .filter-bar__inner::-webkit-scrollbar { display: none; }
+
+    .filter-btn {
+      flex-shrink: 0;
+      padding: 0.45rem 1.1rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+    .filter-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* Blog grid */
+    .blog-section {
+      padding: var(--space-xl) 0 var(--space-3xl);
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+    @media (max-width: 1024px) {
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .blog-grid { grid-template-columns: 1fr; gap: var(--space-md); }
+    }
+
+    /* Post card (blog version — slightly different) */
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--bg-card);
+      transition: transform var(--transition), box-shadow var(--transition);
+      text-decoration: none;
+      color: inherit;
+    }
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+    .blog-card--coming-soon {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .blog-card__thumb {
+      aspect-ratio: 16 / 9;
+      background: var(--bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+    }
+    .blog-card__body {
+      padding: var(--space-md);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .blog-card__cat {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .blog-card__title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--text-primary);
+      flex: 1;
+    }
+    .blog-card__excerpt {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .blog-card__meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: auto;
+      padding-top: var(--space-sm);
+      border-top: 1px solid var(--border-light);
+    }
+    .blog-card__badge {
+      font-size: 0.72rem;
+      background: var(--sage-light);
+      color: var(--sage);
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      font-weight: 500;
+    }
+
+    /* Empty state */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: var(--space-3xl) var(--space-md);
+      color: var(--text-muted);
+    }
+    .empty-state__icon { font-size: 3rem; margin-bottom: var(--space-sm); }
+    .empty-state h3 { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
+
+    /* Hidden for filter */
+    .blog-card[data-hidden="true"] { display: none; }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "PRESENTLY",
+    "url": "https://presently.at/blog.html",
+    "description": "먹는 것, 씻는 것, 쓰는 것. 잘 고른 것들로 나를 가꾸는 이야기.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "PRESENTLY",
+      "url": "https://presently.at"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="메인 네비게이션">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="PRESENTLY 홈">PRESENTLY<span></span></a>
+      <div class="nav__links">
+        <a href="/blog.html?cat=food">먹는 것</a>
+        <a href="/blog.html?cat=bath">씻는 것</a>
+        <a href="/blog.html?cat=stationery">쓰는 것</a>
+        <a href="/blog.html?cat=scent">향 · 차 · 주방</a>
+        <a href="/blog.html?cat=philosophy">철학</a>
+        <a href="/about.html" class="nav__108">108°</a>
+        <a href="https://instagram.com/be.presently" target="_blank" rel="noopener" class="nav__instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          @be.presently
+        </a>
+      </div>
+      <button class="nav__hamburger" aria-label="메뉴" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Blog Hero -->
+  <section class="blog-hero" aria-label="블로그 소개">
+    <div class="container">
+      <h1>매일 나에게 돌아오는 것들</h1>
+      <p>먹는 것, 씻는 것, 쓰는 것. 잘 고른 것들로 나를 가꾸는 사람의 이야기.</p>
+    </div>
+  </section>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar" role="navigation" aria-label="카테고리 필터">
+    <div class="filter-bar__inner">
+      <button class="filter-btn active" data-cat="all">전체</button>
+      <button class="filter-btn" data-cat="food">🥚 먹는 것</button>
+      <button class="filter-btn" data-cat="bath">🛁 씻는 것</button>
+      <button class="filter-btn" data-cat="stationery">🖊 쓰는 것</button>
+      <button class="filter-btn" data-cat="scent">🕯 향 · 차 · 주방</button>
+      <button class="filter-btn" data-cat="body">🌿 몸을 돌보는 것</button>
+      <button class="filter-btn" data-cat="philosophy">📖 철학 · 북저널</button>
+    </div>
+  </div>
+
+  <!-- Blog Posts -->
+  <main class="blog-section">
+    <div class="container">
+      <div class="blog-grid" id="blog-grid">
+
+        <!-- ✅ PUBLISHED: 달걀 -->
+        <a href="/post-egg.html" class="blog-card" data-cat="food">
+          <div class="blog-card__thumb">🥚</div>
+          <div class="blog-card__body">
+            <div class="blog-card__cat">먹는 것 · Food</div>
+            <h2 class="blog-card__title">달걀에 대한 모든 것 — 너무 가까워서 몰랐던 완전식품</h2>
+            <p class="blog-card__excerpt">
+              난각번호, 무항생제, 유기농, 동물복지. 마트에서 달걀을 고를 때 진짜 봐야 하는 것들. 레스토랑 출신이 정리한 달걀 선택 완전 가이드.
+            </p>
+            <div class="blog-card__meta">
+              <span>2026. 04. 26</span>
+              <span>⏱ 12분</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Coming soon: 108° 목욕 -->
+        <a href="#" class="blog-card blog-card--coming-soon" data-cat="bath">
+          <div class="blog-card__thumb">🛁</div>
+          <div class="blog-card__body">
+            <div class="blog-card__cat">씻는 것 · Bath</div>
+            <h2 class="blog-card__title">화씨 108° — 번뇌를 녹이는 목욕의 온도</h2>
+            <p class="blog-card__excerpt">
+              불교에서 108은 번뇌의 수. 화씨 108도는 치유의 목욕 온도. 이 숫자에서 두 개가 만난다.
+            </p>
+            <div class="blog-card__meta">
+              <span class="blog-card__badge">Coming soon</span>
+              <span>⏱ 8분</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Coming soon: 호보니치 vs 스탈로지 -->
+        <a href="#" class="blog-card blog-card--coming-soon" data-cat="stationery">
+          <div class="blog-card__thumb">🖊</div>
+          <div class="blog-card__body">
+            <div class="blog-card__cat">쓰는 것 · Stationery</div>
+            <h2 class="blog-card__title">Hobonichi vs Stalogy — 만년필로 쓰는 사람의 노트 선택법</h2>
+            <p class="blog-card__excerpt">
+              얇고 잘 번지지 않는 종이. 손에 닿는 느낌. 직접 써본 일본 노트 비교.
+            </p>
+            <div class="blog-card__meta">
+              <span class="blog-card__badge">Coming soon</span>
+              <span>⏱ 6분</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Coming soon: 바스솔트 레시피 -->
+        <a href="#" class="blog-card blog-card--coming-soon" data-cat="bath">
+          <div class="blog-card__thumb">🧂</div>
+          <div class="blog-card__body">
+            <div class="blog-card__cat">씻는 것 · 108°</div>
+            <h2 class="blog-card__title">내가 직접 만드는 바스솔트 — 재료부터 레시피까지</h2>
+            <p class="blog-card__excerpt">
+              사해소금, 엡솜솔트, 에센셜오일. 레스토랑 출신의 재료 지식이 욕조로 들어갔다.
+            </p>
+            <div class="blog-card__meta">
+              <span class="blog-card__badge">Coming soon</span>
+              <span>⏱ 7분</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Coming soon: 저탄고지 -->
+        <a href="#" class="blog-card blog-card--coming-soon" data-cat="food">
+          <div class="blog-card__thumb">🥩</div>
+          <div class="blog-card__body">
+            <div class="blog-card__cat">먹는 것 · Food</div>
+            <h2 class="blog-card__title">저탄고지를 약식동원으로 — 트렌드가 아닌 철학으로 먹기</h2>
+            <p class="blog-card__excerpt">
+              음식과 약은 같은 뿌리에서 온다. 탄수화물을 줄이는 것이 철학이 될 수 있는 이유.
+            </p>
+            <div class="blog-card__meta">
+              <span class="blog-card__badge">Coming soon</span>
+              <span>⏱ 10분</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Coming soon: 괄사 -->
+        <a href="#" class="blog-card blog-card--coming-soon" data-cat="body">
+          <div class="blog-card__thumb">🌿</div>
+          <div class="blog-card__body">
+            <div class="blog-card__cat">몸을 돌보는 것 · Body</div>
+            <h2 class="blog-card__title">괄사 — 동양 의학의 지혜를 아침 루틴에 넣는 방법</h2>
+            <p class="blog-card__excerpt">
+              기의 순환. 현대인의 목과 어깨에 가장 먼저 닿아야 하는 오래된 도구.
+            </p>
+            <div class="blog-card__meta">
+              <span class="blog-card__badge">Coming soon</span>
+              <span>⏱ 5분</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Coming soon: Ippodo 차 -->
+        <a href="#" class="blog-card blog-card--coming-soon" data-cat="scent">
+          <div class="blog-card__thumb">🍵</div>
+          <div class="blog-card__body">
+            <div class="blog-card__cat">향 · 차 · 주방</div>
+            <h2 class="blog-card__title">Ippodo Tea — 교토 1717년 차집의 말차를 아침에 마시는 이유</h2>
+            <p class="blog-card__excerpt">
+              108배 후, 고요한 아침. 일본 최고 차집의 말차 한 잔이 하루의 시작을 어떻게 바꾸는지.
+            </p>
+            <div class="blog-card__meta">
+              <span class="blog-card__badge">Coming soon</span>
+              <span>⏱ 5분</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Coming soon: Noda Horo -->
+        <a href="#" class="blog-card blog-card--coming-soon" data-cat="scent">
+          <div class="blog-card__thumb">🍳</div>
+          <div class="blog-card__body">
+            <div class="blog-card__cat">주방 · Kitchen</div>
+            <h2 class="blog-card__title">Noda Horo — 요리사 출신이 법랑 용기를 10년 쓰는 이유</h2>
+            <p class="blog-card__excerpt">
+              냄새가 배지 않는다. 산에 강하다. 오래 쓸수록 가치가 올라가는 도구.
+            </p>
+            <div class="blog-card__meta">
+              <span class="blog-card__badge">Coming soon</span>
+              <span>⏱ 6분</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Coming soon: 철학 -->
+        <a href="#" class="blog-card blog-card--coming-soon" data-cat="philosophy">
+          <div class="blog-card__thumb">📖</div>
+          <div class="blog-card__body">
+            <div class="blog-card__cat">철학 · 북저널</div>
+            <h2 class="blog-card__title">모든 괴로움은 안에서 온다 — 수행자의 자세로 사는 것</h2>
+            <p class="blog-card__excerpt">
+              행복과 자유는 밖으로 찾아서는 얻을 수 없다. 이 브랜드의 시작이 된 한 문장.
+            </p>
+            <div class="blog-card__meta">
+              <span class="blog-card__badge">Coming soon</span>
+              <span>⏱ 8분</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-name">PRESENTLY</div>
+          <p class="footer__brand-tagline">
+            매일 나에게 돌아오는 사람들을 위한 브랜드.<br>
+            먹는 것, 씻는 것, 쓰는 것 — 잘 고른 것들로 나를 가꾸는 이야기.
+          </p>
+          <a href="https://instagram.com/be.presently" target="_blank" rel="noopener" class="footer__instagram">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg>
+            @be.presently
+          </a>
+        </div>
+        <div>
+          <p class="footer__heading">카테고리</p>
+          <ul class="footer__links">
+            <li><a href="/blog.html?cat=food">먹는 것</a></li>
+            <li><a href="/blog.html?cat=bath">씻는 것</a></li>
+            <li><a href="/blog.html?cat=stationery">쓰는 것</a></li>
+            <li><a href="/blog.html?cat=scent">향 · 차 · 주방</a></li>
+            <li><a href="/blog.html?cat=philosophy">철학 · 북저널</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">브랜드</p>
+          <ul class="footer__links">
+            <li><a href="/about.html">108° 스토리</a></li>
+            <li><a href="/about.html#philosophy">브랜드 철학</a></li>
+            <li><a href="#">108° 제품 (출시 예정)</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">더 보기</p>
+          <ul class="footer__links">
+            <li><a href="#">문의</a></li>
+            <li><a href="#">협업 제안</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 PRESENTLY. presently.at</span>
+        <span class="footer__bottom-108">108°</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Category filter logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.blog-card');
+
+    function applyFilter(cat) {
+      filterBtns.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.cat === cat);
+        btn.setAttribute('aria-pressed', btn.dataset.cat === cat);
+      });
+      cards.forEach(card => {
+        if (cat === 'all' || card.dataset.cat === cat) {
+          card.removeAttribute('data-hidden');
+        } else {
+          card.setAttribute('data-hidden', 'true');
+        }
+      });
+    }
+
+    // Read URL param
+    const params = new URLSearchParams(window.location.search);
+    const initialCat = params.get('cat') || 'all';
+    applyFilter(initialCat);
+
+    // Button clicks
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cat = btn.dataset.cat;
+        applyFilter(cat);
+        // Update URL without reload
+        const url = cat === 'all' ? '/blog.html' : `/blog.html?cat=${cat}`;
+        history.replaceState(null, '', url);
+      });
+    });
+  </script>
+</body>
+</html>
