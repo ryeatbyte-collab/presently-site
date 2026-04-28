@@ -1,269 +1,1266 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PRESENTLY — 매일 나에게 돌아오는 것들</title>
-  <meta name="description" content="먹는 것, 씻는 것, 쓰는 것. 잘 고른 것들로 나를 가꾸는 사람의 이야기. 화씨 108°로 번뇌를 녹이는 목욕 브랜드 108°와 일본 문구 큐레이션.">
-  <meta name="keywords" content="PRESENTLY, 108도, 바스솔트, 일본문구, 저탄고지, 약식동원, 목욕, 만년필, 라이프스타일">
-  <meta property="og:title" content="PRESENTLY — 매일 나에게 돌아오는 것들">
-  <meta property="og:description" content="먹는 것, 씻는 것, 쓰는 것. 잘 고른 것들로 나를 가꾸는 사람의 이야기.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://presently.at">
-  <link rel="canonical" href="https://presently.at">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRESENTLY — 매일 잘 고르는 사람의 기록</title>
+<meta name="description" content="먹는 것, 씻는 것, 읽는 것, 생각하는 것. 잘 고른 것들과 그 곁의 이야기.">
+<meta name="keywords" content="PRESENTLY, 108도, 바스솔트, 일본문구, 약식동원, 식품백과, 레시피, 라이프스타일">
+<meta property="og:title" content="PRESENTLY — 매일 잘 고르는 사람의 기록">
+<meta property="og:description" content="먹는 것, 씻는 것, 읽는 것, 생각하는 것. 잘 고른 것들과 그 곁의 이야기.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://presently.at">
+<link rel="canonical" href="https://presently.at">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Nanum+Myeongjo:wght@400;700;800&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 
-  <!-- JSON-LD Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "PRESENTLY",
+  "url": "https://presently.at",
+  "description": "먹는 것, 씻는 것, 읽는 것, 생각하는 것. 잘 고른 것들과 그 곁의 이야기.",
+  "publisher": {
+    "@type": "Organization",
     "name": "PRESENTLY",
-    "url": "https://presently.at",
-    "description": "먹는 것, 씻는 것, 쓰는 것. 잘 고른 것들로 나를 가꾸는 사람의 이야기.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "PRESENTLY",
-      "sameAs": ["https://instagram.com/be.presently"]
-    }
+    "sameAs": ["https://instagram.com/be.presently"]
   }
-  </script>
+}
+</script>
+
+<style>
+/* =========================================================
+   PRESENTLY — Mobile-first food magazine
+   Design model: NYT Cooking
+   Categories: 食 · 浴 · 書 · 心
+   ========================================================= */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #FBF8F2;
+  --bg-2: #F2EDE2;
+  --bg-card: #FFFFFF;
+  --ink: #1A1A1A;
+  --ink-2: #4A4540;
+  --ink-3: #8A8278;
+  --line: #E5DDCD;
+  --line-2: #F0EADD;
+  --accent: #B85C3C;
+  --sage: #3D5140;
+  --sage-2: #E8EDEA;
+
+  --serif-en: 'Spectral', 'Nanum Myeongjo', Georgia, serif;
+  --serif-kr: 'Nanum Myeongjo', 'Spectral', serif;
+  --serif-han: 'Nanum Myeongjo', 'Spectral', serif;
+  --logo-font: 'Playfair Display', 'Spectral', Georgia, serif;
+  --logo-weight: 600;
+  --logo-letter: -0.01em;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --max: 1100px;
+  --gutter-mobile: 18px;
+  --gutter-desk: 32px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--serif-kr);
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { background: none; border: 0; cursor: pointer; font: inherit; color: inherit; }
+
+/* =========================================================
+   STICKY HEADER
+   ========================================================= */
+.head {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.head__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 14px var(--gutter-mobile);
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+}
+.head__btn {
+  width: 36px; height: 36px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--ink);
+}
+.head__btn svg { width: 20px; height: 20px; }
+.head__logo {
+  text-align: center;
+  font-family: var(--logo-font);
+  font-weight: var(--logo-weight);
+  letter-spacing: var(--logo-letter);
+  font-size: 1.5rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+.head__logo .dot { color: var(--accent); }
+.head__btn--account { justify-self: end; }
+
+.head__cats {
+  display: none;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+}
+.head__cats-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 10px var(--gutter-mobile);
+  display: flex; gap: 28px;
+  font-family: var(--sans);
+  font-size: .82rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.head__cats-inner::-webkit-scrollbar { display: none; }
+.head__cats-inner a { white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; }
+.head__cats-inner a:hover { color: var(--accent); }
+.head__cats-inner .han { font-family: var(--serif-han); color: var(--accent); font-size: 1rem; letter-spacing: 0; text-transform: none; }
+
+@media (min-width: 768px) {
+  .head__inner { grid-template-columns: 1fr auto 1fr; padding: 16px var(--gutter-desk); }
+  .head__left { display: flex; gap: 4px; }
+  .head__btn--account { justify-self: end; }
+  .head__cats { display: block; }
+}
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter-mobile);
+}
+@media (min-width: 768px) {
+  .wrap { padding: 0 var(--gutter-desk); }
+}
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+.sect {
+  padding: 28px 0 8px;
+}
+.sect-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  margin-bottom: 18px;
+}
+.sect-head__t {
+  font-family: var(--serif-en);
+  font-size: 1.55rem;
+  font-weight: 500;
+  letter-spacing: -.005em;
+  color: var(--ink);
+  display: flex; align-items: baseline; gap: 10px;
+}
+.sect-head__t .han {
+  font-family: var(--serif-han);
+  color: var(--accent);
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.sect-head__more {
+  font-family: var(--sans);
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.sect-head__more:hover { color: var(--accent); }
+
+@media (min-width: 768px) {
+  .sect { padding: 44px 0 8px; }
+  .sect-head__t { font-size: 1.95rem; }
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero {
+  padding-top: 22px;
+}
+.hero__media {
+  position: relative;
+  aspect-ratio: 1/1;
+  background: var(--bg-2);
+  overflow: hidden;
+}
+.hero__bookmark {
+  position: absolute; right: 14px; bottom: 14px;
+  width: 44px; height: 44px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  color: var(--ink);
+}
+.hero__bookmark:hover { color: var(--accent); }
+.hero__bookmark svg { width: 18px; height: 18px; }
+.hero__body { padding: 18px 0 8px; }
+.hero__eyebrow {
+  font-family: var(--sans);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.hero__eyebrow .han { font-family: var(--serif-han); font-weight: 500; font-size: 1rem; letter-spacing: 0; text-transform: none; }
+.hero__title {
+  font-family: var(--serif-kr);
+  font-size: clamp(1.7rem, 6vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.hero__by {
+  font-family: var(--serif-en);
+  font-style: italic;
+  font-size: .95rem;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.hero__by u { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.hero__sum {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink-2);
+  margin-bottom: 14px;
+  max-width: 32em;
+}
+.hero__meta {
+  font-family: var(--sans);
+  font-size: .82rem;
+  color: var(--ink-2);
+  display: flex; align-items: center; gap: 14px;
+}
+.hero__meta .dot { width: 3px; height: 3px; background: var(--ink-3); border-radius: 50%; display: inline-block; }
+
+@media (min-width: 768px) {
+  .hero { padding-top: 36px; }
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .hero__media { aspect-ratio: 4/5; }
+  .hero__title { font-size: 2.8rem; }
+}
+
+.hero[data-hero-mode="classic"] .hero__side { display: none; }
+.hero[data-hero-mode="classic"] .hero__main { display: contents; }
+
+.hero[data-hero-mode="monocle"] .hero__inner {
+  display: block;
+}
+.hero[data-hero-mode="monocle"] .hero__main { display: block; }
+.hero[data-hero-mode="monocle"] .hero__side { display: block; margin-top: 40px; }
+
+@media (min-width: 768px) {
+  .hero[data-hero-mode="monocle"] .hero__inner {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .hero[data-hero-mode="monocle"] .hero__main {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 80px;
+    align-self: start;
+    display: block;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  .hero[data-hero-mode="monocle"] .hero__main::-webkit-scrollbar { display: none; }
+  .hero[data-hero-mode="monocle"] .hero__main .hero__media { aspect-ratio: 4/5; }
+  .hero[data-hero-mode="monocle"] .hero__main .hero__body { margin-top: 1.4rem; }
+  .hero[data-hero-mode="monocle"] .hero__side { margin-top: 0; min-height: 140vh; }
+}
+
+.hero__side-head {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 20px;
+}
+.hero__side-rule {
+  flex: 1; height: 1px; background: var(--ink); opacity: .85;
+}
+.hero__side-label {
+  font-family: var(--sans);
+  font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink); font-weight: 600;
+}
+
+.side-card {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 16px;
+  padding: 18px 0;
+  align-items: start;
+}
+.side-card + .side-card { border-top: 1px solid var(--line); }
+.side-card:first-of-type { padding-top: 0; }
+.side-card__media {
+  aspect-ratio: 1/1;
+  position: relative;
+  overflow: hidden;
+}
+.side-card__media .ph { position: absolute; inset: 0; }
+.side-card__eyebrow {
+  font-family: var(--sans);
+  font-size: .65rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink-3); font-weight: 600;
+  display: block; margin-bottom: 6px;
+}
+.side-card__title {
+  font-family: var(--serif-en), var(--serif-kr);
+  font-size: 1rem; line-height: 1.3; font-weight: 500;
+  color: var(--ink);
+  margin: 0 0 8px;
+  letter-spacing: -.005em;
+}
+.side-card__meta {
+  font-family: var(--sans);
+  font-size: .72rem; color: var(--ink-3);
+  display: inline-flex; align-items: center; gap: 5px;
+}
+@media (min-width: 980px) {
+  .side-card { grid-template-columns: 120px 1fr; gap: 20px; padding: 22px 0; }
+  .side-card__title { font-size: 1.08rem; }
+}
+
+/* =========================================================
+   HORIZONTAL SCROLL
+   ========================================================= */
+.hscroll {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding: 4px 0 18px;
+  margin: 0 calc(-1 * var(--gutter-mobile));
+  padding-left: var(--gutter-mobile);
+  padding-right: var(--gutter-mobile);
+}
+.hscroll::-webkit-scrollbar { display: none; }
+
+.hscroll-bar {
+  display: none;
+  height: 2px;
+  background: var(--line);
+  position: relative;
+  margin: 0 0 32px 0;
+  border-radius: 2px;
+}
+.hscroll-bar__track {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  background: var(--ink);
+  border-radius: 2px;
+  width: 25%;
+  transition: left .15s ease;
+}
+
+@media (min-width: 768px) {
+  .hscroll { margin: 0 calc(-1 * var(--gutter-desk)); padding-left: var(--gutter-desk); padding-right: var(--gutter-desk); gap: 20px; }
+}
+
+/* =========================================================
+   ENCYCLOPEDIA CARD
+   ========================================================= */
+.enc-card {
+  flex: 0 0 78%;
+  scroll-snap-align: start;
+  display: flex; flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  position: relative;
+}
+.enc-card__media {
+  aspect-ratio: 4/3;
+  background: var(--bg-2);
+  position: relative;
+  overflow: hidden;
+}
+.enc-card__body {
+  padding: 16px 18px 20px;
+  display: flex; flex-direction: column;
+  flex: 1;
+}
+.enc-card__eyebrow {
+  font-family: var(--sans);
+  font-size: .68rem; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.enc-card__eyebrow .han { font-family: var(--serif-han); font-size: 1rem; letter-spacing: 0; text-transform: none; }
+.enc-card__title {
+  font-family: var(--serif-kr);
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -.005em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.enc-card__sum {
+  font-family: var(--serif-en);
+  font-style: italic;
+  font-size: .92rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.enc-card__meta {
+  margin-top: auto;
+  font-family: var(--sans);
+  font-size: .76rem;
+  color: var(--ink-3);
+  display: flex; gap: 10px;
+}
+.enc-card__meta .dot { width: 2px; height: 2px; background: var(--ink-3); border-radius: 50%; align-self: center; }
+
+@media (min-width: 768px) {
+  .enc-card { flex: 0 0 calc((100% - 60px) / 4); }
+  .enc-card__title { font-size: 1.1rem; }
+}
+
+/* =========================================================
+   RECIPE CARD
+   ========================================================= */
+.recipe-card {
+  flex: 0 0 65%;
+  scroll-snap-align: start;
+  display: flex; flex-direction: column;
+}
+.recipe-card__media {
+  aspect-ratio: 1/1;
+  background: var(--bg-2);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.recipe-card__bookmark {
+  position: absolute; right: 10px; bottom: 10px;
+  width: 36px; height: 36px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+}
+.recipe-card__bookmark svg { width: 14px; height: 14px; }
+.recipe-card__easy {
+  position: absolute; left: 10px; top: 10px;
+  background: var(--sage);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: .65rem; font-weight: 700;
+  letter-spacing: .1em;
+  padding: 4px 10px;
+  border-radius: 99px;
+  text-transform: uppercase;
+}
+.recipe-card__title {
+  font-family: var(--serif-kr);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -.005em;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.recipe-card__by {
+  font-family: var(--serif-en);
+  font-style: italic;
+  font-size: .82rem;
+  color: var(--ink-2);
+  margin-bottom: 4px;
+}
+.recipe-card__time {
+  font-family: var(--sans);
+  font-size: .8rem;
+  color: var(--ink-3);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.recipe-card__time svg { width: 12px; height: 12px; }
+
+@media (min-width: 768px) {
+  .recipe-card { flex: 0 0 calc((100% - 60px) / 4); }
+}
+
+/* =========================================================
+   LIST SECTION
+   ========================================================= */
+.list-row {
+  display: grid;
+  grid-template-columns: 1fr 92px;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+}
+.list-row:first-child { padding-top: 0; }
+.list-row:last-child { border-bottom: 0; }
+.list-row__thumb {
+  aspect-ratio: 1/1;
+  background: var(--bg-2);
+  position: relative;
+  overflow: hidden;
+}
+.list-row__eyebrow {
+  font-family: var(--sans);
+  font-size: .66rem; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.list-row__eyebrow .han { font-family: var(--serif-han); font-size: .95rem; letter-spacing: 0; text-transform: none; }
+.list-row__title {
+  font-family: var(--serif-kr);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -.005em;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.list-row__date {
+  font-family: var(--sans);
+  font-size: .74rem;
+  color: var(--ink-3);
+}
+@media (min-width: 768px) {
+  .list-row { grid-template-columns: 1fr 140px; gap: 24px; padding: 22px 0; }
+  .list-row__title { font-size: 1.2rem; }
+}
+
+/* =========================================================
+   TRENDING
+   ========================================================= */
+.trending {
+  padding: 12px 0 8px;
+}
+.trending__media {
+  aspect-ratio: 4/3;
+  background: var(--bg-2);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.trending__caption {
+  font-family: var(--sans);
+  font-size: .7rem;
+  color: var(--ink-3);
+  letter-spacing: .02em;
+  margin-bottom: 14px;
+}
+.trending__eyebrow {
+  font-family: var(--sans);
+  font-size: .72rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink-2);
+  margin-bottom: 10px;
+}
+.trending__title {
+  font-family: var(--serif-kr);
+  font-size: clamp(1.5rem, 4.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -.01em;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.trending__sum {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+  margin-bottom: 12px;
+}
+.trending__date {
+  font-family: var(--sans);
+  font-size: .76rem;
+  color: var(--ink-3);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .trending__inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+}
+
+/* =========================================================
+   PLACEHOLDERS
+   ========================================================= */
+.ph {
+  position: absolute; inset: 0;
+}
+.ph--photo {
+  background:
+    radial-gradient(ellipse at 30% 25%, rgba(255,255,255,.55), transparent 55%),
+    radial-gradient(ellipse at 75% 80%, rgba(255,255,255,.25), transparent 50%),
+    var(--bg-2);
+}
+.ph--photo[data-tone="warm"] { background: radial-gradient(ellipse at 30% 25%, rgba(255,247,232,.7), transparent 55%), radial-gradient(ellipse at 75% 80%, rgba(232,210,170,.4), transparent 60%), #E8D9BD; }
+.ph--photo[data-tone="green"] { background: radial-gradient(ellipse at 30% 25%, rgba(243,255,234,.55), transparent 55%), radial-gradient(ellipse at 75% 80%, rgba(178,198,158,.5), transparent 60%), #C9D4B5; }
+.ph--photo[data-tone="cream"] { background: radial-gradient(ellipse at 30% 25%, rgba(255,253,247,.7), transparent 55%), radial-gradient(ellipse at 75% 80%, rgba(238,228,206,.4), transparent 60%), #EDE3CD; }
+.ph--photo[data-tone="bath"] { background: radial-gradient(ellipse at 30% 25%, rgba(232,237,234,.7), transparent 55%), radial-gradient(ellipse at 75% 80%, rgba(180,196,182,.5), transparent 60%), #B8C4BC; }
+.ph--photo[data-tone="paper"] { background: radial-gradient(ellipse at 35% 30%, rgba(255,253,243,.6), transparent 55%), radial-gradient(ellipse at 70% 75%, rgba(212,196,164,.45), transparent 60%), #D4C8AE; }
+
+.ph--han {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg-2);
+  color: var(--ink);
+}
+.ph--han .han {
+  font-family: var(--serif-han);
+  font-weight: 400;
+  opacity: .14;
+  font-size: clamp(5rem, 22vw, 12rem);
+  line-height: 1;
+}
+.ph__caption {
+  position: absolute; left: 14px; bottom: 14px;
+  font-family: var(--serif-en); font-style: italic;
+  font-size: .78rem;
+  color: var(--ink-2);
+  background: rgba(255,255,255,.85);
+  padding: 4px 10px;
+  letter-spacing: .02em;
+}
+
+/* =========================================================
+   NEWSLETTER CTA
+   ========================================================= */
+.signup {
+  margin: 50px calc(-1 * var(--gutter-mobile)) 0;
+  padding: 48px var(--gutter-mobile);
+  background: var(--ink);
+  color: rgba(255,255,255,.88);
+  text-align: center;
+}
+.signup__eyebrow {
+  font-family: var(--sans);
+  font-size: .72rem; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+  margin-bottom: 14px;
+}
+.signup__title {
+  font-family: var(--serif-kr);
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #fff;
+  margin-bottom: 14px;
+}
+.signup__title em { font-family: var(--serif-en); font-style: italic; color: var(--accent); font-weight: 400; }
+.signup__sub {
+  font-size: .94rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,.65);
+  max-width: 28em;
+  margin: 0 auto 22px;
+}
+.signup__form {
+  display: flex; flex-direction: column;
+  gap: 10px;
+  max-width: 380px;
+  margin: 0 auto;
+}
+.signup__form input {
+  padding: 14px 16px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.18);
+  color: #fff;
+  font: inherit; font-size: .95rem;
+}
+.signup__form input::placeholder { color: rgba(255,255,255,.4); }
+.signup__form input:focus { outline: 1px solid var(--accent); border-color: var(--accent); }
+.signup__form button {
+  background: var(--accent);
+  color: #fff;
+  padding: 14px 20px;
+  font-family: var(--sans);
+  font-size: .82rem; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase;
+}
+.signup__form button:hover { background: #9a4830; }
+.signup__note {
+  font-family: var(--sans);
+  font-size: .74rem;
+  color: rgba(255,255,255,.45);
+  margin-top: 12px;
+}
+@media (min-width: 768px) {
+  .signup { margin: 70px calc(-1 * var(--gutter-desk)) 0; padding: 70px var(--gutter-desk); }
+  .signup__form { flex-direction: row; }
+  .signup__form input { flex: 1; }
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.foot {
+  padding: 40px 0 24px;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  margin-top: 48px;
+}
+.foot__top {
+  display: flex; flex-direction: column;
+  gap: 32px;
+  margin-bottom: 28px;
+}
+.foot__brand-name {
+  font-family: var(--logo-font);
+  font-size: 1.4rem; font-weight: var(--logo-weight);
+  letter-spacing: var(--logo-letter);
+  margin-bottom: 8px;
+}
+.foot__brand-name .dot { color: var(--accent); }
+.foot__brand-tag {
+  font-size: .9rem; line-height: 1.7;
+  color: var(--ink-2);
+  margin-bottom: 14px;
+  max-width: 28em;
+}
+.foot__heading {
+  font-family: var(--sans);
+  font-size: .68rem; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 12px;
+}
+.foot__links { display: flex; flex-direction: column; gap: 10px; }
+.foot__links a {
+  font-size: .92rem;
+  color: var(--ink-2);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.foot__links a:hover { color: var(--accent); }
+.foot__links .han { font-family: var(--serif-han); color: var(--accent); font-size: 1rem; }
+.foot__bottom {
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; flex-wrap: wrap;
+  gap: 12px;
+  font-family: var(--sans);
+  font-size: .76rem;
+  color: var(--ink-3);
+}
+@media (min-width: 768px) {
+  .foot__top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; }
+}
+
+/* =========================================================
+   ICONS
+   ========================================================= */
+.icon { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+body[data-logo-font="playfair"]  { --logo-font: 'Playfair Display', 'Spectral', Georgia, serif; --logo-weight: 600; --logo-letter: -0.01em; }
+body[data-logo-font="cormorant"] { --logo-font: 'Cormorant Garamond', 'Spectral', Georgia, serif; --logo-weight: 600; --logo-letter: 0.01em; }
+body[data-logo-font="dmserif"]   { --logo-font: 'DM Serif Display', 'Spectral', Georgia, serif; --logo-weight: 400; --logo-letter: -0.005em; }
+body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Georgia, serif; --logo-weight: 600; --logo-letter: 0.04em; }
+</style>
 </head>
-<body>
+<body data-theme="cooking" data-logo-font="spectral">
 
-  <!-- Navigation -->
-  <nav class="nav" role="navigation" aria-label="메인 네비게이션">
-    <div class="nav__inner">
-      <a href="/" class="nav__logo" aria-label="PRESENTLY 홈">PRESENTLY<span></span></a>
-      <div class="nav__links">
-        <a href="/blog.html?cat=food">먹는 것</a>
-        <a href="/blog.html?cat=bath">씻는 것</a>
-        <a href="/blog.html?cat=stationery">쓰는 것</a>
-        <a href="/blog.html?cat=scent">향 · 차 · 주방</a>
-        <a href="/blog.html?cat=philosophy">철학</a>
-        <a href="/about.html" class="nav__108">108°</a>
-        <a href="https://instagram.com/be.presently" target="_blank" rel="noopener" class="nav__instagram" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          @be.presently
-        </a>
-      </div>
-      <button class="nav__hamburger" aria-label="메뉴" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+<!-- ICON SPRITE -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16" y2="16"/></symbol>
+    <symbol id="i-account" viewBox="0 0 24 24"><circle cx="12" cy="9" r="4"/><path d="M4 21c1-4.5 4.5-7 8-7s7 2.5 8 7"/></symbol>
+    <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 4h12v17l-6-4-6 4z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".7"/></symbol>
+  </defs>
+</svg>
+
+<!-- =========================================================
+     STICKY HEADER
+     ========================================================= -->
+<header class="head">
+  <div class="head__inner">
+    <div class="head__left" style="display:flex;gap:4px">
+      <button class="head__btn" aria-label="메뉴"><svg class="icon" style="width:22px;height:22px"><use href="#i-menu"/></svg></button>
+      <button class="head__btn" aria-label="검색"><svg class="icon" style="width:20px;height:20px"><use href="#i-search"/></svg></button>
     </div>
-  </nav>
+    <a href="/" class="head__logo">PRESENTLY<span class="dot">·</span></a>
+    <button class="head__btn head__btn--account" aria-label="계정"><svg class="icon" style="width:20px;height:20px"><use href="#i-account"/></svg></button>
+  </div>
+  <div class="head__cats">
+    <div class="head__cats-inner">
+      <a href="/blog.html?cat=food"><span class="han">食</span> Food</a>
+      <a href="/blog.html?cat=bath"><span class="han">浴</span> Bath</a>
+      <a href="/blog.html?cat=stationery"><span class="han">書</span> Reading</a>
+      <a href="/blog.html?cat=philosophy"><span class="han">心</span> Notes</a>
+      <a href="#" style="margin-left:auto">레시피</a>
+      <a href="#">식품 백과</a>
+    </div>
+  </div>
+</header>
 
-  <!-- Hero -->
-  <section class="hero" aria-label="소개">
-    <div>
-      <span class="hero__eyebrow">be. presently</span>
-      <h1 class="hero__title">
-        조용히,<br>
-        <em>잘 살기</em>
-      </h1>
-      <p class="hero__sub">
-        먹는 것, 씻는 것, 쓰는 것.<br>
-        잘 고른 것들로 나를 가꾸는 사람의 이야기.
-      </p>
-      <a href="/about.html" class="hero__badge">
-        화씨 108° — 번뇌를 녹이는 온도에 대하여
+<main>
+
+  <!-- =========================================================
+       HERO — TODAY'S READ
+       ========================================================= -->
+  <section class="hero wrap" data-hero-mode="monocle">
+    <div class="hero__inner">
+      <div class="hero__main">
+        <div class="hero__media">
+          <div class="ph ph--photo" data-tone="warm"></div>
+          <div class="ph__caption">사진: Presently</div>
+          <button class="hero__bookmark" aria-label="저장"><svg class="icon"><use href="#i-bookmark"/></svg></button>
+        </div>
+        <div class="hero__body">
+          <span class="hero__eyebrow">
+            <span class="han">食</span> 오늘의 글 · TODAY'S READ
+          </span>
+          <h1 class="hero__title">올리브오일이라는 기름의 모든 것 — 압착, 산도, 그리고 진짜 좋은 것 고르는 법</h1>
+          <p class="hero__by">글 · <u>Presently</u></p>
+          <p class="hero__sum">엑스트라 버진과 그냥 버진의 차이, 산도 0.3과 0.8이 입에 들어왔을 때 어떻게 다른지, 부엌에 두고 매일 쓰는 것과 보존해두고 가끔 쓰는 것 — 한 병으로 다 안 되는 이유.</p>
+          <div class="hero__meta">
+            <span style="display:inline-flex;align-items:center;gap:6px"><svg class="icon" style="width:13px;height:13px"><use href="#i-clock"/></svg> 12분 읽기</span>
+            <span class="dot"></span>
+            <span>2026.04.26</span>
+            <span class="dot"></span>
+            <span style="color:var(--accent);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:.74rem">食品百科</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero__side" aria-label="이주 다른 읽을 거리">
+        <div class="hero__side-head">
+          <span class="hero__side-rule"></span>
+          <span class="hero__side-label">ALSO THIS WEEK · 이번 주</span>
+        </div>
+
+        <a class="side-card" href="#">
+          <div class="side-card__media"><div class="ph ph--photo" data-tone="bath"></div></div>
+          <div class="side-card__body">
+            <span class="side-card__eyebrow">BATH · 浴</span>
+            <h3 class="side-card__title">화씨 108° — 번뇌를 녹이는 목욕의 온도에 대하여</h3>
+            <span class="side-card__meta"><svg class="icon" style="width:11px;height:11px"><use href="#i-clock"/></svg> 8분</span>
+          </div>
+        </a>
+
+        <a class="side-card" href="#">
+          <div class="side-card__media"><div class="ph ph--han"><div class="han">書</div></div></div>
+          <div class="side-card__body">
+            <span class="side-card__eyebrow">STATIONERY · 書</span>
+            <h3 class="side-card__title">Hobonichi vs Stalogy — 만년필로 쓰는 사람의 노트 선택법</h3>
+            <span class="side-card__meta"><svg class="icon" style="width:11px;height:11px"><use href="#i-clock"/></svg> 6분</span>
+          </div>
+        </a>
+
+        <a class="side-card" href="#">
+          <div class="side-card__media"><div class="ph ph--photo" data-tone="cream"></div></div>
+          <div class="side-card__body">
+            <span class="side-card__eyebrow">SCENT · 香</span>
+            <h3 class="side-card__title">Ippodo — 교토 1717년 차집의 말차를 매일 아침 마시는 이유</h3>
+            <span class="side-card__meta"><svg class="icon" style="width:11px;height:11px"><use href="#i-clock"/></svg> 5분</span>
+          </div>
+        </a>
+
+        <a class="side-card" href="#">
+          <div class="side-card__media"><div class="ph ph--han"><div class="han">體</div></div></div>
+          <div class="side-card__body">
+            <span class="side-card__eyebrow">BODY · 體</span>
+            <h3 class="side-card__title">괄사 — 동양 의학의 지혜를 아침 루틴에 넣는 법</h3>
+            <span class="side-card__meta"><svg class="icon" style="width:11px;height:11px"><use href="#i-clock"/></svg> 5분</span>
+          </div>
+        </a>
+
+        <a class="side-card" href="#">
+          <div class="side-card__media"><div class="ph ph--photo" data-tone="warm"></div></div>
+          <div class="side-card__body">
+            <span class="side-card__eyebrow">FOOD · 食</span>
+            <h3 class="side-card__title">저탄고지를 약식동원으로 — 트렌드가 아닌 철학으로 먹기</h3>
+            <span class="side-card__meta"><svg class="icon" style="width:11px;height:11px"><use href="#i-clock"/></svg> 10분</span>
+          </div>
+        </a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION — 食品百科
+       ========================================================= -->
+  <section class="sect wrap" aria-label="식품 백과">
+    <div class="sect-head">
+      <h2 class="sect-head__t"><span class="han">食</span> 食品百科</h2>
+      <a class="sect-head__more" href="#">모두 보기 →</a>
+    </div>
+
+    <div class="hscroll" data-hscroll>
+      <a class="enc-card" href="#">
+        <div class="enc-card__media">
+          <div class="ph ph--photo" data-tone="cream"></div>
+        </div>
+        <div class="enc-card__body">
+          <span class="enc-card__eyebrow"><span class="han">食</span> 食品百科</span>
+          <h3 class="enc-card__title">달걀이라는 음식의 모든 것</h3>
+          <p class="enc-card__sum">반숙·완숙·수란·온천란 — 65℃부터 90℃까지의 풍경.</p>
+          <span class="enc-card__meta">
+            <span style="display:inline-flex;align-items:center;gap:5px"><svg class="icon" style="width:11px;height:11px"><use href="#i-clock"/></svg> 18분</span>
+            <span class="dot"></span>
+            <span>2026.04.26</span>
+          </span>
+        </div>
+      </a>
+
+      <a class="enc-card" href="#">
+        <div class="enc-card__media">
+          <div class="ph ph--photo" data-tone="cream"></div>
+        </div>
+        <div class="enc-card__body">
+          <span class="enc-card__eyebrow"><span class="han">食</span> 食品百科</span>
+          <h3 class="enc-card__title">두부 — 콩의 가장 오래된 변신</h3>
+          <p class="enc-card__sum">연두부, 부침두부, 순두부 — 응고제와 수분의 함수.</p>
+          <span class="enc-card__meta">
+            <span style="display:inline-flex;align-items:center;gap:5px"><svg class="icon" style="width:11px;height:11px"><use href="#i-clock"/></svg> 14분</span>
+            <span class="dot"></span>
+            <span>2026.04.18</span>
+          </span>
+        </div>
+      </a>
+
+      <a class="enc-card" href="#">
+        <div class="enc-card__media">
+          <div class="ph ph--photo" data-tone="cream"></div>
+        </div>
+        <div class="enc-card__body">
+          <span class="enc-card__eyebrow"><span class="han">食</span> 食品百科</span>
+          <h3 class="enc-card__title">우유 — 살균법이 맛을 바꾼다</h3>
+          <p class="enc-card__sum">저온살균과 초고온살균 사이, 그리고 목초우유의 진실.</p>
+          <span class="enc-card__meta">
+            <span style="display:inline-flex;align-items:center;gap:5px"><svg class="icon" style="width:11px;height:11px"><use href="#i-clock"/></svg> 11분</span>
+            <span class="dot"></span>
+            <span>2026.04.09</span>
+          </span>
+        </div>
+      </a>
+
+      <a class="enc-card" href="#">
+        <div class="enc-card__media">
+          <div class="ph ph--photo" data-tone="green"></div>
+        </div>
+        <div class="enc-card__body">
+          <span class="enc-card__eyebrow"><span class="han">食</span> 食品百科</span>
+          <h3 class="enc-card__title">올리브오일이라는 기름의 모든 것</h3>
+          <p class="enc-card__sum">엑스트라 버진과 산도, 한 병으로 안 되는 이유.</p>
+          <span class="enc-card__meta">
+            <span style="display:inline-flex;align-items:center;gap:5px"><svg class="icon" style="width:11px;height:11px"><use href="#i-clock"/></svg> 12분</span>
+            <span class="dot"></span>
+            <span>2026.04.26</span>
+          </span>
+        </div>
+      </a>
+
+      <a class="enc-card" href="#" style="opacity:.55">
+        <div class="enc-card__media">
+          <div class="ph ph--han"><span class="han">米</span></div>
+        </div>
+        <div class="enc-card__body">
+          <span class="enc-card__eyebrow"><span class="han">食</span> 食品百科</span>
+          <h3 class="enc-card__title">쌀 — 한 그릇의 밥에 대하여</h3>
+          <p class="enc-card__sum">곧 발행</p>
+          <span class="enc-card__meta">
+            <span>준비 중</span>
+          </span>
+        </div>
       </a>
     </div>
-    <div class="hero__scroll" aria-hidden="true">scroll</div>
+    <div class="hscroll-bar"><div class="hscroll-bar__track"></div></div>
   </section>
 
-  <!-- Categories -->
-  <section class="categories" aria-label="카테고리">
-    <div class="container">
-      <div class="section-header">
-        <h2>카테고리</h2>
-      </div>
-      <div class="categories__grid">
-        <a href="/blog.html?cat=food" class="category-card">
-          <div class="category-card__icon">🥚</div>
-          <div class="category-card__name">먹는 것</div>
-          <div class="category-card__en">Food</div>
-        </a>
-        <a href="/blog.html?cat=bath" class="category-card">
-          <div class="category-card__icon">🛁</div>
-          <div class="category-card__name">씻는 것</div>
-          <div class="category-card__en">Bath · 108°</div>
-        </a>
-        <a href="/blog.html?cat=stationery" class="category-card">
-          <div class="category-card__icon">🖊</div>
-          <div class="category-card__name">쓰는 것</div>
-          <div class="category-card__en">Stationery</div>
-        </a>
-        <a href="/blog.html?cat=scent" class="category-card">
-          <div class="category-card__icon">🕯</div>
-          <div class="category-card__name">향 · 차 · 주방</div>
-          <div class="category-card__en">Scent · Tea · Kitchen</div>
-        </a>
-        <a href="/blog.html?cat=body" class="category-card">
-          <div class="category-card__icon">🌿</div>
-          <div class="category-card__name">몸을 돌보는 것</div>
-          <div class="category-card__en">Body · Gua Sha</div>
-        </a>
-        <a href="/blog.html?cat=philosophy" class="category-card">
-          <div class="category-card__icon">📖</div>
-          <div class="category-card__name">철학 · 북저널</div>
-          <div class="category-card__en">Philosophy</div>
-        </a>
-      </div>
+  <!-- =========================================================
+       SECTION — 레시피
+       ========================================================= -->
+  <section class="sect wrap" aria-label="레시피">
+    <div class="sect-head">
+      <h2 class="sect-head__t"><span class="han">食</span> 레시피</h2>
+      <a class="sect-head__more" href="#">모두 보기 →</a>
     </div>
-  </section>
 
-  <!-- Featured Post -->
-  <section class="posts-section" aria-label="최근 글">
-    <div class="container">
-      <div class="section-header">
-        <h2>최근 글</h2>
-        <a href="/blog.html">모두 보기 →</a>
-      </div>
-      <div class="posts-grid">
+    <div class="hscroll" data-hscroll>
+      <a class="recipe-card" href="#">
+        <div class="recipe-card__media">
+          <div class="ph ph--photo" data-tone="warm"></div>
+          <span class="recipe-card__easy">쉬움</span>
+          <button class="recipe-card__bookmark" aria-label="저장"><svg class="icon"><use href="#i-bookmark"/></svg></button>
+        </div>
+        <h3 class="recipe-card__title">완벽한 반숙란 — 7분 30초의 법칙</h3>
+        <p class="recipe-card__by"><i>By Presently</i></p>
+        <p class="recipe-card__time"><svg class="icon"><use href="#i-clock"/></svg> 12분</p>
+      </a>
 
-        <!-- Featured (post-egg hidden from main) -->
-        <!--
-        <a href="/post-egg.html" class="post-card post-card--featured">
-          <div class="post-card__image">
-            <div class="post-card__image-placeholder">🥚</div>
-          </div>
-          <div class="post-card__body">
-            <div class="post-card__category">먹는 것 · Food</div>
-            <h2 class="post-card__title">달걀에 대한 모든 것 — 너무 가까워서 몰랐던 완전식품</h2>
-            <p class="post-card__excerpt">
-              난각번호, 무항생제, 유기농, 동물복지. 마트에서 달걀을 고를 때 진짜 봐야 하는 것들. 레스토랑 출신이 정리한 달걀 선택 완전 가이드.
-            </p>
-            <div class="post-card__meta">
-              <span>2026. 04. 26</span>
-              <span class="post-card__read-time">⏱ 12분</span>
-            </div>
-          </div>
-        </a>
-        -->
+      <a class="recipe-card" href="#">
+        <div class="recipe-card__media">
+          <div class="ph ph--photo" data-tone="cream"></div>
+          <button class="recipe-card__bookmark" aria-label="저장"><svg class="icon"><use href="#i-bookmark"/></svg></button>
+        </div>
+        <h3 class="recipe-card__title">두부 한 모로 만드는 차가운 여름 한 끼</h3>
+        <p class="recipe-card__by"><i>By Presently</i></p>
+        <p class="recipe-card__time"><svg class="icon"><use href="#i-clock"/></svg> 8분</p>
+      </a>
 
-        <!-- Post 2 -->
-        <a href="#" class="post-card">
-          <div class="post-card__image">
-            <div class="post-card__image-placeholder">🛁</div>
-          </div>
-          <div class="post-card__body">
-            <div class="post-card__category">씻는 것 · Bath</div>
-            <h3 class="post-card__title">화씨 108° — 번뇌를 녹이는 목욕의 온도</h3>
-            <p class="post-card__excerpt">불교에서 108은 번뇌의 수. 화씨 108도는 치유의 목욕 온도. 이 숫자에서 두 개가 만난다.</p>
-            <div class="post-card__meta">
-              <span>Coming soon</span>
-              <span class="post-card__read-time">⏱ 8분</span>
-            </div>
-          </div>
-        </a>
+      <a class="recipe-card" href="#">
+        <div class="recipe-card__media">
+          <div class="ph ph--photo" data-tone="green"></div>
+          <span class="recipe-card__easy">쉬움</span>
+          <button class="recipe-card__bookmark" aria-label="저장"><svg class="icon"><use href="#i-bookmark"/></svg></button>
+        </div>
+        <h3 class="recipe-card__title">올리브오일과 마늘만으로 — 알리오 올리오</h3>
+        <p class="recipe-card__by"><i>By Presently</i></p>
+        <p class="recipe-card__time"><svg class="icon"><use href="#i-clock"/></svg> 15분</p>
+      </a>
 
-        <!-- Post 3 -->
-        <a href="#" class="post-card">
-          <div class="post-card__image">
-            <div class="post-card__image-placeholder">🖊</div>
-          </div>
-          <div class="post-card__body">
-            <div class="post-card__category">쓰는 것 · Stationery</div>
-            <h3 class="post-card__title">Hobonichi vs Stalogy — 만년필로 쓰는 사람의 노트 선택법</h3>
-            <p class="post-card__excerpt">얇고 잘 번지지 않는 종이. 손에 닿는 느낌. 직접 써본 일본 노트 비교.</p>
-            <div class="post-card__meta">
-              <span>Coming soon</span>
-              <span class="post-card__read-time">⏱ 6분</span>
-            </div>
-          </div>
-        </a>
+      <a class="recipe-card" href="#">
+        <div class="recipe-card__media">
+          <div class="ph ph--photo" data-tone="warm"></div>
+          <button class="recipe-card__bookmark" aria-label="저장"><svg class="icon"><use href="#i-bookmark"/></svg></button>
+        </div>
+        <h3 class="recipe-card__title">우유로 끓이는 가정식 까르보나라 — 크림 없이</h3>
+        <p class="recipe-card__by"><i>By Presently</i></p>
+        <p class="recipe-card__time"><svg class="icon"><use href="#i-clock"/></svg> 22분</p>
+      </a>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- 108° Banner -->
-  <section class="banner-108" aria-label="108° 브랜드">
-    <div class="container">
-      <p class="banner-108__eyebrow">Our Brand</p>
-      <div class="banner-108__number">108°</div>
-      <h2 class="banner-108__title">뜨거운 물 속에서 번뇌를 내려놓는 시간</h2>
-      <p class="banner-108__desc">
-        화씨 108도는 섭씨 42.2도 — 일본 온센과 치유적 목욕의 온도.<br>
-        불교에서 108은 인간의 번뇌의 수.<br>
-        같은 숫자, 같은 방향. 몸과 마음을 동시에 녹인다.
-      </p>
-      <a href="/about.html" class="banner-108__cta">브랜드 스토리 읽기 →</a>
-    </div>
-  </section>
-
-  <!-- Philosophy Quote -->
-  <section class="philosophy" aria-label="철학">
-    <div class="container">
-      <blockquote class="philosophy__quote">
-        "모든 괴로움과 얽매임은 잘 살펴보면 다 내 마음이 일으킨다.<br>
-        행복과 자유는 밖으로 찾아서는 결코 얻을 수 없다."
-      </blockquote>
-      <p class="philosophy__attr">— PRESENTLY의 시작</p>
-    </div>
-  </section>
-
-  <!-- Instagram CTA -->
-  <section class="instagram-cta" aria-label="인스타그램">
-    <div class="container">
-      <h3>매일 한 가지씩, 잘 고르는 법</h3>
-      <p>인스타그램에서 하루에 하나씩 — 먹는 것, 씻는 것, 쓰는 것에 대한 이야기를 나눕니다.</p>
-      <a href="https://instagram.com/be.presently" target="_blank" rel="noopener" class="instagram-cta__btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-        @be.presently 팔로우
+      <a class="recipe-card" href="#">
+        <div class="recipe-card__media">
+          <div class="ph ph--photo" data-tone="cream"></div>
+          <button class="recipe-card__bookmark" aria-label="저장"><svg class="icon"><use href="#i-bookmark"/></svg></button>
+        </div>
+        <h3 class="recipe-card__title">에그 베네딕트 — 수란 만드는 5분의 기술</h3>
+        <p class="recipe-card__by"><i>By Presently</i></p>
+        <p class="recipe-card__time"><svg class="icon"><use href="#i-clock"/></svg> 25분</p>
       </a>
     </div>
+    <div class="hscroll-bar"><div class="hscroll-bar__track"></div></div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer__grid">
+  <!-- =========================================================
+       TRENDING
+       ========================================================= -->
+  <section class="sect wrap">
+    <div class="sect-head">
+      <h2 class="sect-head__t"><span class="han">讀</span> Trending — 지금 많이 읽는 글</h2>
+    </div>
+    <article class="trending">
+      <div class="trending__inner">
         <div>
-          <div class="footer__brand-name">PRESENTLY</div>
-          <p class="footer__brand-tagline">
-            매일 나에게 돌아오는 사람들을 위한 브랜드.<br>
-            먹는 것, 씻는 것, 쓰는 것 — 잘 고른 것들로 나를 가꾸는 이야기.
-          </p>
-          <a href="https://instagram.com/be.presently" target="_blank" rel="noopener" class="footer__instagram">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg>
-            @be.presently
-          </a>
+          <div class="trending__media">
+            <div class="ph ph--photo" data-tone="cream"></div>
+          </div>
+          <p class="trending__caption">사진: Presently · 부엌에서, 아침 7시</p>
         </div>
         <div>
-          <p class="footer__heading">카테고리</p>
-          <ul class="footer__links">
-            <li><a href="/blog.html?cat=food">먹는 것</a></li>
-            <li><a href="/blog.html?cat=bath">씻는 것</a></li>
-            <li><a href="/blog.html?cat=stationery">쓰는 것</a></li>
-            <li><a href="/blog.html?cat=scent">향 · 차 · 주방</a></li>
-            <li><a href="/blog.html?cat=philosophy">철학 · 북저널</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="footer__heading">브랜드</p>
-          <ul class="footer__links">
-            <li><a href="/about.html">108° 스토리</a></li>
-            <li><a href="/about.html#philosophy">브랜드 철학</a></li>
-            <li><a href="#">108° 제품 (출시 예정)</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="footer__heading">더 보기</p>
-          <ul class="footer__links">
-            <li><a href="#">문의</a></li>
-            <li><a href="#">협업 제안</a></li>
-          </ul>
+          <p class="trending__eyebrow">食 · 食品百科</p>
+          <h2 class="trending__title">달걀이라는 음식의 모든 것 — 65℃에서 시작하는 풍경</h2>
+          <p class="trending__sum">반숙란을 만드는 데 필요한 건 시간이 아니라 온도였다는 것을, 지난 10년간의 부엌에서 알았다.</p>
+          <p class="trending__date">2026.04.26 · 18분 읽기</p>
         </div>
       </div>
-      <div class="footer__bottom">
-        <span>© 2026 PRESENTLY. presently.at</span>
-        <span class="footer__bottom-108">108°</span>
+    </article>
+  </section>
+
+  <!-- =========================================================
+       SECTION — 浴・書・心 LIST
+       ========================================================= -->
+  <section class="sect wrap" aria-label="최근 글">
+    <div class="sect-head">
+      <h2 class="sect-head__t"><span class="han">新</span> Latest — 최근 글</h2>
+      <a class="sect-head__more" href="/blog.html">아카이브 →</a>
+    </div>
+
+    <a class="list-row" href="#">
+      <div>
+        <span class="list-row__eyebrow"><span class="han">浴</span> Bath</span>
+        <h3 class="list-row__title">화씨 108°라는 목욕의 온도 — 매일 돌아가는 곳에 대하여</h3>
+        <p class="list-row__date">2026.04.20 · 9분 읽기</p>
+      </div>
+      <div class="list-row__thumb">
+        <div class="ph ph--photo" data-tone="bath"></div>
+      </div>
+    </a>
+
+    <a class="list-row" href="#">
+      <div>
+        <span class="list-row__eyebrow"><span class="han">書</span> Reading</span>
+        <h3 class="list-row__title">Hobonichi vs Stalogy — 만년필로 쓰는 사람의 노트 선택</h3>
+        <p class="list-row__date">2026.04.14 · 7분 읽기</p>
+      </div>
+      <div class="list-row__thumb">
+        <div class="ph ph--photo" data-tone="paper"></div>
+      </div>
+    </a>
+
+    <a class="list-row" href="#">
+      <div>
+        <span class="list-row__eyebrow"><span class="han">心</span> Notes</span>
+        <h3 class="list-row__title">조용히, 잘 사는 것 — 이름을 붙이지 않은 매일에 대하여</h3>
+        <p class="list-row__date">2026.04.07 · 5분 읽기</p>
+      </div>
+      <div class="list-row__thumb">
+        <div class="ph ph--han"><span class="han">心</span></div>
+      </div>
+    </a>
+
+    <a class="list-row" href="#">
+      <div>
+        <span class="list-row__eyebrow"><span class="han">書</span> Reading</span>
+        <h3 class="list-row__title">이번 달 책상 위에 올려둔 책 네 권</h3>
+        <p class="list-row__date">2026.04.01 · 4분 읽기</p>
+      </div>
+      <div class="list-row__thumb">
+        <div class="ph ph--photo" data-tone="paper"></div>
+      </div>
+    </a>
+
+    <a class="list-row" href="#">
+      <div>
+        <span class="list-row__eyebrow"><span class="han">浴</span> Bath</span>
+        <h3 class="list-row__title">바스솔트 다섯 개를 한 달간 매일 바꿔 써본 메모</h3>
+        <p class="list-row__date">2026.03.24 · 6분 읽기</p>
+      </div>
+      <div class="list-row__thumb">
+        <div class="ph ph--photo" data-tone="bath"></div>
+      </div>
+    </a>
+  </section>
+
+  <!-- =========================================================
+       NEWSLETTER
+       ========================================================= -->
+  <div class="wrap">
+    <section class="signup">
+      <p class="signup__eyebrow">Newsletter</p>
+      <h2 class="signup__title">한 편의 글이 <em>도착합니다.</em></h2>
+      <p class="signup__sub">
+        먹는 것, 씻는 것, 읽는 것에 대한 한 편의 글. 발행 일정 없이, 보낼 이야기가 있을 때만.
+      </p>
+      <form class="signup__form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ 등록됐어요';">
+        <input type="email" placeholder="이메일 주소" required>
+        <button type="submit">구독하기</button>
+      </form>
+      <p class="signup__note">광고 없음 · 언제든 구독 취소</p>
+    </section>
+  </div>
+
+</main>
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div>
+        <div class="foot__brand-name">PRESENTLY<span class="dot">·</span></div>
+        <p class="foot__brand-tag">먹는 것, 씻는 것, 읽는 것 — 잘 고른 것들과 그 곁의 이야기.</p>
+        <a href="https://instagram.com/be.presently" target="_blank" rel="noopener" style="font-size:.86rem;color:var(--ink-2);display:inline-flex;gap:8px;align-items:center"><svg class="icon"><use href="#i-instagram"/></svg> @be.presently</a>
+      </div>
+      <div>
+        <div class="foot__heading">카테고리</div>
+        <div class="foot__links">
+          <a href="/blog.html?cat=food"><span class="han">食</span> 먹는 것</a>
+          <a href="/blog.html?cat=bath"><span class="han">浴</span> 씻는 것</a>
+          <a href="/blog.html?cat=stationery"><span class="han">書</span> 읽는 것</a>
+          <a href="/blog.html?cat=philosophy"><span class="han">心</span> 생각하는 것</a>
+        </div>
+      </div>
+      <div>
+        <div class="foot__heading">콘텐츠</div>
+        <div class="foot__links">
+          <a href="#">식품 백과</a>
+          <a href="#">레시피</a>
+          <a href="/blog.html">최근 글</a>
+          <a href="/blog.html">아카이브</a>
+        </div>
+      </div>
+      <div>
+        <div class="foot__heading">사이트</div>
+        <div class="foot__links">
+          <a href="/about.html">소개</a>
+          <a href="#">뉴스레터</a>
+          <a href="#">문의</a>
+          <a href="#">RSS</a>
+        </div>
       </div>
     </div>
-  </footer>
+    <div class="foot__bottom">
+      <span>© 2026 Presently</span>
+      <span>Made quietly · 조용히 만듭니다</span>
+    </div>
+  </div>
+</footer>
 
-  <script src="js/main.js"></script>
+<script>
+document.querySelectorAll('.sect').forEach(sect => {
+  const scroll = sect.querySelector('[data-hscroll]');
+  const bar = sect.querySelector('.hscroll-bar__track');
+  if (!scroll || !bar) return;
+  const update = () => {
+    const max = scroll.scrollWidth - scroll.clientWidth;
+    if (max <= 0) { bar.parentElement.style.display = 'none'; return; }
+    const pct = scroll.scrollLeft / max;
+    const trackW = scroll.clientWidth / scroll.scrollWidth;
+    bar.style.width = (trackW * 100) + '%';
+    bar.style.left = (pct * (1 - trackW) * 100) + '%';
+  };
+  scroll.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+});
+</script>
+
 </body>
 </html>
