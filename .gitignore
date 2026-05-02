@@ -1,1 +1,6 @@
 .env
+
+# Local backups (not for deployment)
+index.backup-*.html
+.DS_Store
+**/.DS_Store
