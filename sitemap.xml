@@ -46,6 +46,17 @@
   </url>
 
   <url>
+    <loc>https://presently.at/posts/blood-donation/</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://presently.at/posts/blood-donation/cover.jpg</image:loc>
+      <image:title>이기적인 헌혈 — 철분 과잉을 빼는 가장 쉬운 방법</image:title>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://presently.at/about.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>yearly</changefreq>
