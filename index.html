@@ -5,30 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PRESENTLY — 매일 잘 고르는 사람의 기록</title>
 <meta name="description" content="먹는 것, 씻는 것, 읽는 것, 생각하는 것. 잘 고른 것들과 그 곁의 이야기.">
-<meta name="keywords" content="PRESENTLY, 108도, 바스솔트, 일본문구, 약식동원, 식품백과, 레시피, 라이프스타일">
-<meta property="og:title" content="PRESENTLY — 매일 잘 고르는 사람의 기록">
-<meta property="og:description" content="먹는 것, 씻는 것, 읽는 것, 생각하는 것. 잘 고른 것들과 그 곁의 이야기.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://presently.at">
-<link rel="canonical" href="https://presently.at">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Nanum+Myeongjo:wght@400;700;800&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "PRESENTLY",
-  "url": "https://presently.at",
-  "description": "먹는 것, 씻는 것, 읽는 것, 생각하는 것. 잘 고른 것들과 그 곁의 이야기.",
-  "publisher": {
-    "@type": "Organization",
-    "name": "PRESENTLY",
-    "sameAs": ["https://instagram.com/be.presently"]
-  }
-}
-</script>
 
 <style>
 /* =========================================================
@@ -40,6 +19,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
+  /* Palette — warmer cream + ink + small accent */
   --bg: #FBF8F2;
   --bg-2: #F2EDE2;
   --bg-card: #FFFFFF;
@@ -48,7 +28,7 @@
   --ink-3: #8A8278;
   --line: #E5DDCD;
   --line-2: #F0EADD;
-  --accent: #B85C3C;
+  --accent: #B85C3C;        /* rust — NYT Cooking-inspired single accent */
   --sage: #3D5140;
   --sage-2: #E8EDEA;
 
@@ -73,13 +53,14 @@ body {
   color: var(--ink);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 button { background: none; border: 0; cursor: pointer; font: inherit; color: inherit; }
 
 /* =========================================================
-   STICKY HEADER
+   STICKY HEADER — NYT Cooking style: ☰  🔍   LOGO    👤
    ========================================================= */
 .head {
   position: sticky; top: 0; z-index: 100;
@@ -113,6 +94,7 @@ button { background: none; border: 0; cursor: pointer; font: inherit; color: inh
 .head__logo .dot { color: var(--accent); }
 .head__btn--account { justify-self: end; }
 
+/* Secondary category bar — only on tablet+ */
 .head__cats {
   display: none;
   border-top: 1px solid var(--line);
@@ -157,7 +139,7 @@ button { background: none; border: 0; cursor: pointer; font: inherit; color: inh
 }
 
 /* =========================================================
-   SECTION HEADER
+   SECTION HEADER — "Latest Stories  |  SEE ALL"
    ========================================================= */
 .sect {
   padding: 28px 0 8px;
@@ -199,7 +181,7 @@ button { background: none; border: 0; cursor: pointer; font: inherit; color: inh
 }
 
 /* =========================================================
-   HERO
+   HERO — TODAY'S READ (NYT Cooking "Recipe of the Day")
    ========================================================= */
 .hero {
   padding-top: 22px;
@@ -277,9 +259,11 @@ button { background: none; border: 0; cursor: pointer; font: inherit; color: inh
   .hero__title { font-size: 2.8rem; }
 }
 
+/* Default classic mode: hide sidebar */
 .hero[data-hero-mode="classic"] .hero__side { display: none; }
 .hero[data-hero-mode="classic"] .hero__main { display: contents; }
 
+/* Monocle mode: sticky main + scrolling sidebar */
 .hero[data-hero-mode="monocle"] .hero__inner {
   display: block;
 }
@@ -361,7 +345,7 @@ button { background: none; border: 0; cursor: pointer; font: inherit; color: inh
 }
 
 /* =========================================================
-   HORIZONTAL SCROLL
+   HORIZONTAL SCROLL — recipes, encyclopedia
    ========================================================= */
 .hscroll {
   display: flex;
@@ -372,9 +356,6 @@ button { background: none; border: 0; cursor: pointer; font: inherit; color: inh
   -ms-overflow-style: none;
   scrollbar-width: none;
   padding: 4px 0 18px;
-  margin: 0 calc(-1 * var(--gutter-mobile));
-  padding-left: var(--gutter-mobile);
-  padding-right: var(--gutter-mobile);
 }
 .hscroll::-webkit-scrollbar { display: none; }
 
@@ -397,11 +378,12 @@ button { background: none; border: 0; cursor: pointer; font: inherit; color: inh
 }
 
 @media (min-width: 768px) {
-  .hscroll { margin: 0 calc(-1 * var(--gutter-desk)); padding-left: var(--gutter-desk); padding-right: var(--gutter-desk); gap: 20px; }
+  .hscroll { gap: 20px; }
 }
 
 /* =========================================================
-   ENCYCLOPEDIA CARD
+   ENCYCLOPEDIA CARD — 食品百科 (deep, illustrated)
+   distinguished by: warm bg, italic eyebrow, serif heading
    ========================================================= */
 .enc-card {
   flex: 0 0 78%;
@@ -466,7 +448,7 @@ button { background: none; border: 0; cursor: pointer; font: inherit; color: inh
 }
 
 /* =========================================================
-   RECIPE CARD
+   RECIPE CARD — 레시피 (NYT-style, square photo + tight meta)
    ========================================================= */
 .recipe-card {
   flex: 0 0 65%;
@@ -529,7 +511,8 @@ button { background: none; border: 0; cursor: pointer; font: inherit; color: inh
 }
 
 /* =========================================================
-   LIST SECTION
+   LIST SECTION — text + small thumbnail (浴・書・心 articles)
+   NYT Cooking style: alternating with horizontal rules
    ========================================================= */
 .list-row {
   display: grid;
@@ -576,7 +559,8 @@ button { background: none; border: 0; cursor: pointer; font: inherit; color: inh
 }
 
 /* =========================================================
-   TRENDING
+   TRENDING — large hero-style card with caption + small list
+   NYT Cooking pattern
    ========================================================= */
 .trending {
   padding: 12px 0 8px;
@@ -634,7 +618,7 @@ button { background: none; border: 0; cursor: pointer; font: inherit; color: inh
 }
 
 /* =========================================================
-   PLACEHOLDERS
+   PLACEHOLDERS — photo gradient + han glyph fallback
    ========================================================= */
 .ph {
   position: absolute; inset: 0;
@@ -802,13 +786,15 @@ button { background: none; border: 0; cursor: pointer; font: inherit; color: inh
    ========================================================= */
 .icon { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 
+/* Logo font tweak overrides */
 body[data-logo-font="playfair"]  { --logo-font: 'Playfair Display', 'Spectral', Georgia, serif; --logo-weight: 600; --logo-letter: -0.01em; }
 body[data-logo-font="cormorant"] { --logo-font: 'Cormorant Garamond', 'Spectral', Georgia, serif; --logo-weight: 600; --logo-letter: 0.01em; }
 body[data-logo-font="dmserif"]   { --logo-font: 'DM Serif Display', 'Spectral', Georgia, serif; --logo-weight: 400; --logo-letter: -0.005em; }
 body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Georgia, serif; --logo-weight: 600; --logo-letter: 0.04em; }
+
 </style>
 </head>
-<body data-theme="cooking" data-logo-font="spectral">
+<body data-theme="cooking">
 
 <!-- ICON SPRITE -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -837,10 +823,10 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
   </div>
   <div class="head__cats">
     <div class="head__cats-inner">
-      <a href="/blog.html?cat=food"><span class="han">食</span> Food</a>
-      <a href="/blog.html?cat=bath"><span class="han">浴</span> Bath</a>
-      <a href="/blog.html?cat=stationery"><span class="han">書</span> Reading</a>
-      <a href="/blog.html?cat=philosophy"><span class="han">心</span> Notes</a>
+      <a href="#"><span class="han">食</span> Food</a>
+      <a href="#"><span class="han">浴</span> Bath</a>
+      <a href="#"><span class="han">書</span> Reading</a>
+      <a href="#"><span class="han">心</span> Notes</a>
       <a href="#" style="margin-left:auto">레시피</a>
       <a href="#">식품 백과</a>
     </div>
@@ -852,8 +838,9 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
   <!-- =========================================================
        HERO — TODAY'S READ
        ========================================================= -->
-  <section class="hero wrap" data-hero-mode="monocle">
+  <section class="hero wrap" data-hero-mode="classic">
     <div class="hero__inner">
+      <!-- LEFT: sticky main read -->
       <div class="hero__main">
         <div class="hero__media">
           <div class="ph ph--photo" data-tone="warm"></div>
@@ -877,6 +864,7 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
         </div>
       </div>
 
+      <!-- RIGHT: scrolling sidebar (only visible in monocle mode) -->
       <aside class="hero__side" aria-label="이주 다른 읽을 거리">
         <div class="hero__side-head">
           <span class="hero__side-rule"></span>
@@ -884,7 +872,7 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
         </div>
 
         <a class="side-card" href="#">
-          <div class="side-card__media"><div class="ph ph--photo" data-tone="bath"></div></div>
+          <div class="side-card__media"><div class="ph ph--photo" data-tone="cool"></div></div>
           <div class="side-card__body">
             <span class="side-card__eyebrow">BATH · 浴</span>
             <h3 class="side-card__title">화씨 108° — 번뇌를 녹이는 목욕의 온도에 대하여</h3>
@@ -932,7 +920,7 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
   </section>
 
   <!-- =========================================================
-       SECTION — 食品百科
+       SECTION — 食品百科 ENCYCLOPEDIA (horizontal scroll)
        ========================================================= -->
   <section class="sect wrap" aria-label="식품 백과">
     <div class="sect-head">
@@ -941,6 +929,7 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
     </div>
 
     <div class="hscroll" data-hscroll>
+      <!-- ENC: 달걀 -->
       <a class="enc-card" href="#">
         <div class="enc-card__media">
           <div class="ph ph--photo" data-tone="cream"></div>
@@ -957,6 +946,7 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
         </div>
       </a>
 
+      <!-- ENC: 두부 -->
       <a class="enc-card" href="#">
         <div class="enc-card__media">
           <div class="ph ph--photo" data-tone="cream"></div>
@@ -973,6 +963,7 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
         </div>
       </a>
 
+      <!-- ENC: 우유 -->
       <a class="enc-card" href="#">
         <div class="enc-card__media">
           <div class="ph ph--photo" data-tone="cream"></div>
@@ -989,6 +980,7 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
         </div>
       </a>
 
+      <!-- ENC: 올리브오일 -->
       <a class="enc-card" href="#">
         <div class="enc-card__media">
           <div class="ph ph--photo" data-tone="green"></div>
@@ -1005,6 +997,7 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
         </div>
       </a>
 
+      <!-- ENC: 다음 — placeholder -->
       <a class="enc-card" href="#" style="opacity:.55">
         <div class="enc-card__media">
           <div class="ph ph--han"><span class="han">米</span></div>
@@ -1023,7 +1016,7 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
   </section>
 
   <!-- =========================================================
-       SECTION — 레시피
+       SECTION — 레시피 (NYT-style grid)
        ========================================================= -->
   <section class="sect wrap" aria-label="레시피">
     <div class="sect-head">
@@ -1032,6 +1025,7 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
     </div>
 
     <div class="hscroll" data-hscroll>
+      <!-- RECIPE 1 -->
       <a class="recipe-card" href="#">
         <div class="recipe-card__media">
           <div class="ph ph--photo" data-tone="warm"></div>
@@ -1043,6 +1037,7 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
         <p class="recipe-card__time"><svg class="icon"><use href="#i-clock"/></svg> 12분</p>
       </a>
 
+      <!-- RECIPE 2 -->
       <a class="recipe-card" href="#">
         <div class="recipe-card__media">
           <div class="ph ph--photo" data-tone="cream"></div>
@@ -1053,6 +1048,7 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
         <p class="recipe-card__time"><svg class="icon"><use href="#i-clock"/></svg> 8분</p>
       </a>
 
+      <!-- RECIPE 3 -->
       <a class="recipe-card" href="#">
         <div class="recipe-card__media">
           <div class="ph ph--photo" data-tone="green"></div>
@@ -1064,6 +1060,7 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
         <p class="recipe-card__time"><svg class="icon"><use href="#i-clock"/></svg> 15분</p>
       </a>
 
+      <!-- RECIPE 4 -->
       <a class="recipe-card" href="#">
         <div class="recipe-card__media">
           <div class="ph ph--photo" data-tone="warm"></div>
@@ -1074,6 +1071,7 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
         <p class="recipe-card__time"><svg class="icon"><use href="#i-clock"/></svg> 22분</p>
       </a>
 
+      <!-- RECIPE 5 -->
       <a class="recipe-card" href="#">
         <div class="recipe-card__media">
           <div class="ph ph--photo" data-tone="cream"></div>
@@ -1088,7 +1086,7 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
   </section>
 
   <!-- =========================================================
-       TRENDING
+       TRENDING — large hero-style featured (NYT pattern)
        ========================================================= -->
   <section class="sect wrap">
     <div class="sect-head">
@@ -1113,12 +1111,12 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
   </section>
 
   <!-- =========================================================
-       SECTION — 浴・書・心 LIST
+       SECTION — 浴・書・心 LIST (with thumbnails)
        ========================================================= -->
   <section class="sect wrap" aria-label="최근 글">
     <div class="sect-head">
       <h2 class="sect-head__t"><span class="han">新</span> Latest — 최근 글</h2>
-      <a class="sect-head__more" href="/blog.html">아카이브 →</a>
+      <a class="sect-head__more" href="#">아카이브 →</a>
     </div>
 
     <a class="list-row" href="#">
@@ -1206,15 +1204,15 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
       <div>
         <div class="foot__brand-name">PRESENTLY<span class="dot">·</span></div>
         <p class="foot__brand-tag">먹는 것, 씻는 것, 읽는 것 — 잘 고른 것들과 그 곁의 이야기.</p>
-        <a href="https://instagram.com/be.presently" target="_blank" rel="noopener" style="font-size:.86rem;color:var(--ink-2);display:inline-flex;gap:8px;align-items:center"><svg class="icon"><use href="#i-instagram"/></svg> @be.presently</a>
+        <a href="https://instagram.com/be.presently" style="font-size:.86rem;color:var(--ink-2);display:inline-flex;gap:8px;align-items:center"><svg class="icon"><use href="#i-instagram"/></svg> @be.presently</a>
       </div>
       <div>
         <div class="foot__heading">카테고리</div>
         <div class="foot__links">
-          <a href="/blog.html?cat=food"><span class="han">食</span> 먹는 것</a>
-          <a href="/blog.html?cat=bath"><span class="han">浴</span> 씻는 것</a>
-          <a href="/blog.html?cat=stationery"><span class="han">書</span> 읽는 것</a>
-          <a href="/blog.html?cat=philosophy"><span class="han">心</span> 생각하는 것</a>
+          <a href="#"><span class="han">食</span> 먹는 것</a>
+          <a href="#"><span class="han">浴</span> 씻는 것</a>
+          <a href="#"><span class="han">書</span> 읽는 것</a>
+          <a href="#"><span class="han">心</span> 생각하는 것</a>
         </div>
       </div>
       <div>
@@ -1222,14 +1220,14 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
         <div class="foot__links">
           <a href="#">식품 백과</a>
           <a href="#">레시피</a>
-          <a href="/blog.html">최근 글</a>
-          <a href="/blog.html">아카이브</a>
+          <a href="#">최근 글</a>
+          <a href="#">아카이브</a>
         </div>
       </div>
       <div>
         <div class="foot__heading">사이트</div>
         <div class="foot__links">
-          <a href="/about.html">소개</a>
+          <a href="#">소개</a>
           <a href="#">뉴스레터</a>
           <a href="#">문의</a>
           <a href="#">RSS</a>
@@ -1244,6 +1242,7 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
 </footer>
 
 <script>
+// Horizontal scroll progress indicators
 document.querySelectorAll('.sect').forEach(sect => {
   const scroll = sect.querySelector('[data-hscroll]');
   const bar = sect.querySelector('.hscroll-bar__track');
@@ -1260,6 +1259,132 @@ document.querySelectorAll('.sect').forEach(sect => {
   window.addEventListener('resize', update);
   update();
 });
+</script>
+
+<!-- ============ TWEAKS PANEL (vanilla) ============ -->
+<style>
+  .tw-panel {
+    position: fixed; right: 16px; bottom: 16px; z-index: 9999;
+    width: 280px; max-width: calc(100vw - 32px);
+    background: #fff; border: 1px solid #e5e0d4;
+    box-shadow: 0 8px 32px rgba(0,0,0,.12);
+    font-family: var(--sans, -apple-system, sans-serif);
+    color: var(--ink, #1a1a1a);
+    display: none;
+  }
+  .tw-panel.is-open { display: block; }
+  .tw-panel__head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 14px; border-bottom: 1px solid #efe9dc;
+  }
+  .tw-panel__title { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
+  .tw-panel__close {
+    background: none; border: 0; cursor: pointer; font-size: 18px; line-height: 1;
+    color: #888; padding: 0 4px;
+  }
+  .tw-panel__body { padding: 14px; max-height: 60vh; overflow-y: auto; }
+  .tw-sec { margin-bottom: 18px; }
+  .tw-sec:last-child { margin-bottom: 0; }
+  .tw-sec__label {
+    display: block; font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: #888; font-weight: 600; margin-bottom: 8px;
+  }
+  .tw-radio { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tw-radio button {
+    flex: 1; min-width: 0;
+    padding: 8px 10px; border: 1px solid #e5e0d4; background: #fff;
+    font-size: 12px; cursor: pointer; transition: all .15s;
+    color: var(--ink, #1a1a1a); font-family: inherit;
+  }
+  .tw-radio button:hover { background: #f7f4ee; }
+  .tw-radio button.is-active { background: var(--ink, #1a1a1a); color: #fff; border-color: var(--ink, #1a1a1a); }
+  .tw-note { font-size: 11px; color: #999; margin-top: 6px; line-height: 1.5; }
+</style>
+
+<div class="tw-panel" id="twPanel" aria-hidden="true">
+  <div class="tw-panel__head">
+    <span class="tw-panel__title">Tweaks</span>
+    <button class="tw-panel__close" id="twClose" aria-label="닫기">×</button>
+  </div>
+  <div class="tw-panel__body">
+    <div class="tw-sec">
+      <span class="tw-sec__label">Hero 레이아웃</span>
+      <div class="tw-radio" data-tw="heroMode">
+        <button data-val="classic">클래식</button>
+        <button data-val="monocle">Monocle식</button>
+      </div>
+      <p class="tw-note">Monocle식: 왼쪽 메인 기사가 고정, 오른쪽 사이드바만 스크롤 (≥980px).</p>
+    </div>
+    <div class="tw-sec">
+      <span class="tw-sec__label">제호 폰트</span>
+      <div class="tw-radio" data-tw="logoFont">
+        <button data-val="playfair">Playfair</button>
+        <button data-val="cormorant">Cormorant</button>
+        <button data-val="dmserif">DM Serif</button>
+        <button data-val="spectral">Spectral</button>
+      </div>
+      <p class="tw-note">매거진 첫인상을 좌우하는 폰트.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  // --- Tweak state ---
+  var defaults = /*EDITMODE-BEGIN*/{
+    "heroMode": "monocle",
+    "logoFont": "spectral"
+  }/*EDITMODE-END*/;
+  var state = Object.assign({}, defaults);
+
+  // --- Apply state to DOM ---
+  function apply() {
+    var hero = document.querySelector('.hero[data-hero-mode]');
+    if (hero) hero.dataset.heroMode = state.heroMode;
+    document.body.dataset.logoFont = state.logoFont;
+
+    document.querySelectorAll('.tw-radio').forEach(function(g) {
+      var key = g.dataset.tw;
+      g.querySelectorAll('button').forEach(function(b) {
+        b.classList.toggle('is-active', b.dataset.val === state[key]);
+      });
+    });
+  }
+
+  // --- Wire up buttons ---
+  document.querySelectorAll('.tw-radio').forEach(function(g) {
+    var key = g.dataset.tw;
+    g.addEventListener('click', function(e) {
+      var btn = e.target.closest('button[data-val]');
+      if (!btn) return;
+      state[key] = btn.dataset.val;
+      apply();
+      try { window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [key]: state[key] } }, '*'); } catch(_) {}
+    });
+  });
+
+  // --- Host protocol: register listener BEFORE announcing availability ---
+  var panel = document.getElementById('twPanel');
+  var closeBtn = document.getElementById('twClose');
+
+  function setOpen(open) {
+    panel.classList.toggle('is-open', open);
+    panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+  }
+  closeBtn.addEventListener('click', function() {
+    setOpen(false);
+    try { window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*'); } catch(_) {}
+  });
+  window.addEventListener('message', function(e) {
+    var d = e.data;
+    if (!d || !d.type) return;
+    if (d.type === '__activate_edit_mode') setOpen(true);
+    else if (d.type === '__deactivate_edit_mode') setOpen(false);
+  });
+
+  apply();
+  try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch(_) {}
+})();
 </script>
 
 </body>
