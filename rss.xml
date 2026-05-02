@@ -1,64 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"
-  xmlns:atom="http://www.w3.org/2005/Atom"
-  xmlns:dc="http://purl.org/dc/elements/1.1/"
-  xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>PRESENTLY</title>
-    <link>https://presently.at/</link>
-    <description>먹는 것, 씻는 것, 읽는 것, 생각하는 것. 잘 고른 것들과 그 곁의 이야기.</description>
-    <language>ko-KR</language>
-    <copyright>© 2026 PRESENTLY</copyright>
-    <managingEditor>nana@presently.at (nana)</managingEditor>
-    <webMaster>nana@presently.at (nana)</webMaster>
-    <lastBuildDate>Sun, 26 Apr 2026 00:00:00 +0900</lastBuildDate>
-    <generator>presently.at custom RSS</generator>
-    <atom:link href="https://presently.at/rss.xml" rel="self" type="application/rss+xml" />
-    <image>
-      <url>https://presently.at/posts/keto-books/cover.jpg</url>
-      <title>PRESENTLY</title>
-      <link>https://presently.at/</link>
-    </image>
+<rss version="2.0">
+<channel>
+<title>PRESENTLY</title>
+<link>https://presently.at/</link>
+<description>먹는 것, 씻는 것, 읽는 것, 생각하는 것. 잘 고른 것들과 그 곁의 이야기.</description>
+<language>ko-KR</language>
+<lastBuildDate>Sun, 26 Apr 2026 00:00:00 +0900</lastBuildDate>
 
-    <item>
-      <title>달걀 고르는 법 — 난각번호·인증·제품 추천 완전 가이드</title>
-      <link>https://presently.at/posts/egg-guide/</link>
-      <guid isPermaLink="true">https://presently.at/posts/egg-guide/</guid>
-      <pubDate>Sun, 26 Apr 2026 00:00:00 +0900</pubDate>
-      <dc:creator>nana</dc:creator>
-      <category>먹는 것</category>
-      <description>난각번호 마지막 숫자, 무항생제, 유기농, 동물복지 — 마트에서 진짜 좋은 달걀을 가르는 기준. 레스토랑 출신이 정리한 완전 가이드와 가성비 추천 제품.</description>
-    </item>
+<item>
+<title>달걀 고르는 법 - 난각번호와 인증, 제품 추천 완전 가이드</title>
+<link>https://presently.at/posts/egg-guide/</link>
+<description>난각번호 마지막 숫자, 무항생제, 유기농, 동물복지. 마트에서 진짜 좋은 달걀을 가르는 기준. 레스토랑 출신이 정리한 완전 가이드와 가성비 추천 제품.</description>
+<pubDate>Sun, 26 Apr 2026 00:00:00 +0900</pubDate>
+<author>nana@presently.at (nana)</author>
+<category>먹는 것</category>
+<guid>https://presently.at/posts/egg-guide/</guid>
+</item>
 
-    <item>
-      <title>키토제닉 입문서 7권 추천 — 한 달 직접 해본 후기</title>
-      <link>https://presently.at/posts/keto-books/</link>
-      <guid isPermaLink="true">https://presently.at/posts/keto-books/</guid>
-      <pubDate>Thu, 23 Apr 2026 09:59:00 +0900</pubDate>
-      <dc:creator>nana</dc:creator>
-      <category>먹는 것</category>
-      <description>글루코스 혁명, 비만 코드, 지방의 진실 등 키토 입문서 7권을 직접 읽고 정리. 추천 유튜버 2명과 한 달 만에 4kg 감량한 식단·혈당·케톤 수치 기록까지.</description>
-    </item>
+<item>
+<title>키토제닉 입문서 7권 추천 - 한 달 직접 해본 후기</title>
+<link>https://presently.at/posts/keto-books/</link>
+<description>글루코스 혁명, 비만 코드, 지방의 진실 등 키토 입문서 7권을 직접 읽고 정리. 추천 유튜버 2명과 한 달 만에 4kg 감량한 식단과 혈당, 케톤 수치 기록까지.</description>
+<pubDate>Thu, 23 Apr 2026 09:59:00 +0900</pubDate>
+<author>nana@presently.at (nana)</author>
+<category>먹는 것</category>
+<guid>https://presently.at/posts/keto-books/</guid>
+</item>
 
-    <item>
-      <title>법륜스님이 말하는 기도 — 욕심이 아닌 정성을 향하여</title>
-      <link>https://presently.at/posts/prayer-vow/</link>
-      <guid isPermaLink="true">https://presently.at/posts/prayer-vow/</guid>
-      <pubDate>Sun, 12 Apr 2026 16:39:00 +0900</pubDate>
-      <dc:creator>nana</dc:creator>
-      <category>생각하는 것</category>
-      <description>108배 백일결사 도전기. 법륜스님 가르침에서 배운 욕심과 정성의 차이, 분별심을 내려놓는 기도법, 그리고 엄마와의 관계 회복까지.</description>
-    </item>
+<item>
+<title>법륜스님이 말하는 기도 - 욕심이 아닌 정성을 향하여</title>
+<link>https://presently.at/posts/prayer-vow/</link>
+<description>108배 백일결사 도전기. 법륜스님 가르침에서 배운 욕심과 정성의 차이, 분별심을 내려놓는 기도법, 그리고 엄마와의 관계 회복까지.</description>
+<pubDate>Sun, 12 Apr 2026 16:39:00 +0900</pubDate>
+<author>nana@presently.at (nana)</author>
+<category>생각하는 것</category>
+<guid>https://presently.at/posts/prayer-vow/</guid>
+</item>
 
-    <item>
-      <title>단식의 효과 — 24시간 굶었을 때 우리 몸에서 일어나는 일</title>
-      <link>https://presently.at/posts/fasting-benefits/</link>
-      <guid isPermaLink="true">https://presently.at/posts/fasting-benefits/</guid>
-      <pubDate>Sat, 11 Apr 2026 14:44:00 +0900</pubDate>
-      <dc:creator>nana</dc:creator>
-      <category>먹는 것</category>
-      <description>인슐린·글리코겐·케톤. 단식 1시간부터 5일까지 인체의 단계별 변화. 16:8 간헐적 단식 3주차 BHB·혈당 데이터, 살이 빠지는 진짜 메커니즘.</description>
-    </item>
+<item>
+<title>단식의 효과 - 24시간 굶었을 때 우리 몸에서 일어나는 일</title>
+<link>https://presently.at/posts/fasting-benefits/</link>
+<description>인슐린, 글리코겐, 케톤. 단식 1시간부터 5일까지 인체의 단계별 변화. 16:8 간헐적 단식 3주차 BHB와 혈당 데이터, 살이 빠지는 진짜 메커니즘.</description>
+<pubDate>Sat, 11 Apr 2026 14:44:00 +0900</pubDate>
+<author>nana@presently.at (nana)</author>
+<category>먹는 것</category>
+<guid>https://presently.at/posts/fasting-benefits/</guid>
+</item>
 
-  </channel>
+</channel>
 </rss>

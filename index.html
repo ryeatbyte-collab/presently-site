@@ -857,12 +857,10 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
   </div>
   <div class="head__cats">
     <div class="head__cats-inner">
-      <a href="#"><span class="han">食</span> Food</a>
-      <a href="#"><span class="han">浴</span> Bath</a>
-      <a href="#"><span class="han">書</span> Reading</a>
-      <a href="#"><span class="han">心</span> Notes</a>
-      <a href="#" style="margin-left:auto">레시피</a>
-      <a href="#">식품 백과</a>
+      <a href="/blog.html?cat=food"><span class="han">食</span> Food</a>
+      <a href="/blog.html?cat=bath"><span class="han">浴</span> Bath</a>
+      <a href="/blog.html?cat=stationery"><span class="han">書</span> Reading</a>
+      <a href="/blog.html?cat=philosophy"><span class="han">心</span> Notes</a>
     </div>
   </div>
 </header>
@@ -964,7 +962,7 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
 
     <div class="hscroll" data-hscroll>
       <!-- ENC: 달걀 -->
-      <a class="enc-card" href="#">
+      <a class="enc-card" href="/posts/egg-guide/">
         <div class="enc-card__media">
           <div class="ph ph--photo" data-tone="cream"></div>
         </div>
@@ -1213,7 +1211,7 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
        NEWSLETTER
        ========================================================= -->
   <div class="wrap">
-    <section class="signup">
+    <section class="signup" id="newsletter">
       <p class="signup__eyebrow">Newsletter</p>
       <h2 class="signup__title">한 편의 글이 <em>도착합니다.</em></h2>
       <p class="signup__sub">
@@ -1243,28 +1241,25 @@ body[data-logo-font="spectral"]  { --logo-font: 'Spectral', 'Nanum Myeongjo', Ge
       <div>
         <div class="foot__heading">카테고리</div>
         <div class="foot__links">
-          <a href="#"><span class="han">食</span> 먹는 것</a>
-          <a href="#"><span class="han">浴</span> 씻는 것</a>
-          <a href="#"><span class="han">書</span> 읽는 것</a>
-          <a href="#"><span class="han">心</span> 생각하는 것</a>
+          <a href="/blog.html?cat=food"><span class="han">食</span> 먹는 것</a>
+          <a href="/blog.html?cat=bath"><span class="han">浴</span> 씻는 것</a>
+          <a href="/blog.html?cat=stationery"><span class="han">書</span> 읽는 것</a>
+          <a href="/blog.html?cat=philosophy"><span class="han">心</span> 생각하는 것</a>
         </div>
       </div>
       <div>
         <div class="foot__heading">콘텐츠</div>
         <div class="foot__links">
-          <a href="#">식품 백과</a>
-          <a href="#">레시피</a>
-          <a href="#">최근 글</a>
-          <a href="#">아카이브</a>
+          <a href="/blog.html">최근 글</a>
+          <a href="/blog.html">아카이브</a>
         </div>
       </div>
       <div>
         <div class="foot__heading">사이트</div>
         <div class="foot__links">
-          <a href="#">소개</a>
-          <a href="#">뉴스레터</a>
-          <a href="#">문의</a>
-          <a href="#">RSS</a>
+          <a href="/about.html">소개</a>
+          <a href="#newsletter">뉴스레터</a>
+          <a href="/rss.xml">RSS</a>
         </div>
       </div>
     </div>
