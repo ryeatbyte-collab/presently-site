@@ -1,6 +1,9 @@
 # Cloudflare Pages redirects
 # Format: /from /to status
 
+# www → apex (canonicalize all traffic to https://presently.at)
+https://www.presently.at/* https://presently.at/:splat 301
+
 # Old single-file post URL → new folder URL (preserve SEO from old links)
 /post-egg.html /posts/egg-guide/ 301
 /post-egg /posts/egg-guide/ 301
